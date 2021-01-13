@@ -1,6 +1,23 @@
+function goreq1(){
+    req1 = document.getElementById("req1").value;
+    document.getElementById("req1_msg").innerText="Thank you! your message is " + req1;
+}
+
+
+
+//requirement 2
+
 function addSet(){
      numToAdd = parseInt(document.getElementById("getSet").value);
-    document.getElementById("act1").innerText= getset(numToAdd);
+
+     if(numToAdd<=0){
+        document.getElementById("act1").innerText="Please enter a positive value only, starting from 1 to up";
+     }
+     else{
+        document.getElementById("act1").innerText= getset(numToAdd);
+     }
+
+    
 
 }
 
@@ -13,6 +30,8 @@ return totalAns;
 
 }
 
+
+//requirement 3
 
 
 function addNum(){
