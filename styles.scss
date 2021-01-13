@@ -8,26 +8,28 @@ h1 {
   padding: 1em;
 }
 
-.myanswer {
-  color: #c00;
+
+.myanswer{
+  color:#c00;
   display: block;
   margin-top: 10px;
-}
+  }
 
-.container {
+.container{
+
   padding-top: 10px;
+
 }
 
-code {
+
+code{
   margin-top: 10px;
   display: block;
   font-style: italic;
+  span{
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+  }
 }
-
-code span {
-  display: block;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-}
-/*# sourceMappingURL=styles.css.map */
