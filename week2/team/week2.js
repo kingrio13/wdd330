@@ -31,8 +31,6 @@ return totalAns;
 }
 
 
-//requirement 3
-
 
 function addNum(){
     let numOne= parseInt(document.getElementById("numOne").value);
