@@ -1,0 +1,246 @@
+//colors
+$mainColor:#F0CA47;
+$mainTextColor:#fff;
+$darkTextColor:#1b262c;
+$secondaryTextColor:#37505C;
+$hoverColor:#80A2B3;
+$bgcolor1: #1b262c;
+
+body {
+  font-size: 20px;
+  color:$mainTextColor;
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding:0px;
+  margin:0px;
+  grid-template-areas: 
+            "header header header header"
+            "main main main main"
+            "foot foot foot foot";
+
+        
+        
+}
+
+header{
+    grid-area: header;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: "logo navi navi navi"
+                          "banner banner banner banner";   
+}
+.banner{
+    grid-area: banner;
+    height: 40vh;
+    background-color:$bgcolor1;
+    background-size: cover;
+    background-position: center;
+    transition: border-radius 0.3s, opacity 0.3s;
+    display: flex;
+    .bannerImg{
+        max-width: 300px;
+        display: block;
+        margin: auto;
+        img{
+            max-width: 200px;
+            border-radius: 50%;
+        }
+    }
+
+    .bannerContent{
+        max-width: 300px;
+        width: 100%;
+        text-align: center;
+        margin-left: auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        color: $mainTextColor;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0, #e8c346 100%);
+        p{
+            text-align: center;
+            span{
+                display: block;
+                margin: auto;
+                width: auto;
+                font-style: italic;
+            }
+        }
+       
+    }
+}
+
+
+
+.mainLogo{
+  max-width: 300px;
+  grid-area: logo;
+    img{
+      max-width: 200px;
+      max-height: 80px;
+      display: block;
+      margin: auto;
+    }
+
+}
+
+main{
+    grid-area: main;
+  max-width: 1200px;
+  margin:auto;
+  color: $darkTextColor;
+}
+
+footer{
+    display: grid;
+    grid-area: foot;
+    color:$mainTextColor;
+    background-color:$bgcolor1;
+    margin-top:20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-1, .footer-2, .footer-copyright{
+    padding:10px;   
+}
+
+.footer-1{
+    .footer-menu{
+            li{
+              list-style: none;
+              display: inline-block;
+              padding:10px;
+              a{
+                font-family: 'Baloo Chettan 2', cursive;
+                font-size: 14px;
+                text-decoration: none;
+                text-transform: uppercase;
+                color:$mainTextColor;
+              }
+            }
+    }
+}
+
+.footer-copyright{
+    text-align: center;
+    font-size: 12px;
+    line-height: 2px;
+    opacity: .8;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.footer-social-icons{
+    ul{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        li{
+            margin: 0 15px;
+            list-style: none;
+            a{
+                display: block;
+                width: 70px;
+                height: 70px;
+                text-align: center;
+                line-height: 70px;
+                background: $mainColor;
+                border-radius: 50%;
+                font-size: 30px;
+                color:$darkTextColor;
+                &:hover{
+                    color: $mainTextColor;
+                    transition: ease-in-out .5s;
+                }
+            }
+
+
+        }
+    }
+    
+}
+
+nav{
+grid-area: navi;
+justify-content: right;
+text-align: right;
+margin-right: 50px;
+  ul{
+    li{
+      list-style: none;
+      display: inline-block;
+      padding:10px;
+      a{
+        font-family: 'Baloo Chettan 2', cursive;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+h1 {
+  background-color: $mainColor;
+  color:$mainTextColor;
+  padding: 1em;
+  text-align: center;
+}
+
+a{
+color:$secondaryTextColor;
+&:hover{
+color:$hoverColor;
+}
+}
+
+
+.myanswer{
+  color:#c00;
+  display: block;
+  margin-top: 10px;
+  }
+
+.container{
+  padding-top: 10px;
+}
+
+
+code{
+  margin-top: 10px;
+  display: block;
+  font-style: italic;
+  span{
+    display: block;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.tc{
+  display: block;
+  margin-top:50px;
+  margin: auto;
+  max-width: 400px;
+  background: #fff;
+  box-shadow:2px 2px #efecec;
+  padding:10px;
+  h2{
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 3px solid $mainColor;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+  }
+
+  li{
+    padding:10px;
+  }
+  a{
+    text-decoration: none;
+  }
+}
+

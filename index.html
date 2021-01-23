@@ -9,26 +9,62 @@
   </head>
   <body>
 <header>
-  <h1>WDD 330 Portfolio - Rio Michael Miranda</h1>
+  <div class="mainLogo"><img src="resources/logo.png"></div>
   <nav class="mainNav">
     <ul>
-      <li>Home</li>
-      <li>About US</li>
-      <li>Contact Us</li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">About US</a></li>
+      <li><a href="#">Contact Us</a></li>
     </ul>
   </nav>
+  <div class="banner fixed container">
+    <div class="bannerImg">
+      <img src="resources/profile.png" class="profilePic" alt="my Photo">
+    </div>
+    <div class="bannerContent">
+    <p>WDD 330 Portfolio -
+    <span>Rio Michael Miranda</span>
+  </p>
+    </div>
+  </div>
 </header>
 
 
-<main>
+  <main>
     <div class="container tc">
     <h2>Table of Content</h2>
     <ol id="tablecontent"></ol>
     </div>
-
   </main>
+
+
+  <footer>
+    <div class="container">
+      <div class="footer-1">
+        <ul class="footer-menu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#">About US</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+        <div class="footer-2">
+          <div class="footer-social-icons">
+            <ul>
+              <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="footer-copyright">
+          &copy; <span id="currentYear"></span>| Rio Michael Miranda
+        </div>
+    </div>
+  </footer>
   
-    <script src="js/main.js"></script>
+  <!-- Table of content and footer note -->
+    <script src="js/main.js"></script> 
 
   </body>
 </html>

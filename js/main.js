@@ -6,12 +6,12 @@ const links = [
       url: "week1/index.html"
     },
     {
-      label: "Week 2 notes",
+      label: "Week 2 Notes",
       url: "week2/index.html"
     },
     {
-      label: "Challenge Week 2",
-      url: "challenge"
+      label: "Week 3 Notes",
+      url: "week3/index.html"
     }
   ]
 
@@ -28,3 +28,6 @@ li.appendChild(ali);
 console.log(li)
 document.querySelector('#tablecontent').appendChild(li);
 }
+
+
+document.getElementById("currentYear").innerHTML=new Date().getFullYear();
