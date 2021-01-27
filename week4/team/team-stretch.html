@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 portfolio - Week 4</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../../tic.css" />
+  </head>
+  <header>
+    <div class="mainLogo"><img src="../../resources/logo.png"></div>
+    <nav class="mainNav">
+      <ul>
+        <li><a href="/wdd330/index.html">Home</a></li>
+        <li><a href="#">About US</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="banner fixed container">
+      <div class="bannerImg">
+        <img src="../../resources/profile.png" class="profilePic" alt="my Photo">
+      </div>
+      <div class="bannerContent">
+      <p>WDD 330 Portfolio -
+      <span>Rio Michael Miranda</span>
+    </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="gameContainer">
+      <h1>STRETCH</h1>
+        <div id="ticTac" class="tics">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            
+      </div>
+      <div id="nextplayer">Lets Start With Player X</div>
+      <div class="resetButtonContainer"><button class="resetBtn" id="reset_button">Reset Game</button></div>
+    </div>
+  </main>
+  
+
+<footer>
+  <div class="container">
+    <div class="footer-1">
+              <ul class="footer-menu">
+                <li><a href="/wdd330/index.html">Home</a></li>
+                <li><a href="#">About US</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+              <div class="footer-2">
+                <div class="footer-social-icons">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  </ul>
+              </div>
+              </div>
+              <div class="footer-copyright">
+                &copy; <span id="currentYear"></span>| Rio Michael Miranda
+              </div>
+          </div>
+        </footer>
+        
+        <!-- Table of content and footer note -->
+          <script src="/js/main.js"></script> 
+          <script>
+        
+            const ticTac = document.querySelector('#ticTac');
+            const ntic=document.querySelectorAll('#ticTac div');
+            const resetBtn=document.getElementById("reset_button");
+           
+            //store the current player in array
+           
+              const currentPlayerX=[];
+              const currentPlayerO=[];
+              const winningArray= [
+                            [0, 1, 2],
+                            [3, 4, 5],
+                            [6, 7, 8],
+                            [0, 3, 6],
+                            [1, 4, 7],
+                            [2, 5, 8],
+                            [0, 4, 8],
+                            [2, 4, 6]
+                            ];
+              let game_decission=["","","","","","","","",""];  
+              let gameStop=false;
+
+            
+            function addDiv(clickDivs, currentPlayer){
+              const clickDiv=clickDivs.target;
+              const clickIndex=parseInt(clickDiv.getAttribute("data-index-number"));
+              // console.log(game_decission[clickIndex] );
+             if(game_decission[clickIndex]=="" && !gameStop){
+              clickDiv.innerHTML=changePlayer(currentPlayer,clickIndex);
+              console.log(gameStop)
+             }
+            }
+
+            function changePlayer(currentPlayer, clickIndex){
+              if(currentPlayerX.length <= currentPlayerO.length){currentPlayer="X";
+                  currentPlayerX.push(clickIndex);
+                  game_decission[clickIndex]= currentPlayer;
+                  console.log(game_decission[clickIndex]);
+              }
+              else{currentPlayer="O";
+                currentPlayerO.push(clickIndex);
+                game_decission[clickIndex]= currentPlayer;
+                console.log(game_decission[clickIndex]);
+              }
+             
+              whosnext(currentPlayer=="X"?nextplayer="O":nextplayer="X");
+              let tlength=currentPlayerX.length + currentPlayerO.length;
+             checkWin();
+              if(tlength===9){
+                  itsTie()
+                  gameStop=true;
+              }
+             
+              return currentPlayer;
+            }
+
+            function itsTie(){
+                return document.getElementById('nextplayer').innerHTML="It's a Tie!";
+            }
+
+            function whosnext(currentPlayer){
+              document.getElementById('nextplayer').innerHTML=`Its player ${currentPlayer} Turn`;
+              
+            }
+
+            function resetGame(){
+              currentPlayerX.length=0;
+              currentPlayerO.length=0;
+              game_decission=["","","","","","","","",""]; 
+              gameStop=false;
+
+             for(x=0;x<ntic.length;x++){ ntic[x].innerHTML="";}
+
+            document.getElementById('nextplayer').innerHTML="Lets Start With Player X";
+            }
+
+            function dataIndex(){
+              for(x=0;x<ntic.length;x++){
+               ntic[x].setAttribute("data-index-number", x);
+             }
+            }
+
+            function gameOver(currentPlayer){
+                document.getElementById('nextplayer').innerHTML=`Game Over Player ${currentPlayer} Win`;
+                gameStop=true;
+            }
+
+            function checkWin(){
+            playerX_Compare=(currentPlayerX.sort((a, b) => a - b).join(''));              
+            playerO_Compare=(currentPlayerO.sort((a, b) => a - b).join(''));
+
+            for(x=0;x<winningArray.length;x++){
+                  try {
+                      var re = new RegExp('['+playerX_Compare+']', "g");
+                  let mike=winningArray[x].join('').match(re);
+                  // console.log(mike);
+                  // console.log(mike.length);
+                  if(mike.length==3){
+                      let playerwin="X";
+                      gameOver(playerwin);
+                  }
+                  
+                  }
+                  catch(err) {
+            
+                  }
+            }
+
+
+            for(o=0;o<winningArray.length;o++){
+                try {
+                var re = new RegExp('['+playerO_Compare+']', "g");
+                let mike=winningArray[o].join('').match(re);
+                if(mike.length==3){
+                    let playerwin="O";
+                    gameOver(playerwin);
+                }
+                
+                }
+                catch(err) {
+          
+                }
+            }
+
+            }
+              
+            
+
+            dataIndex(ntic);
+            ticTac.addEventListener("click", addDiv);
+            resetBtn.addEventListener("click", resetGame);
+            
+            
+
+
+
+          </script>
+        
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WDD 330 portfolio - Week 4</title>
+    <link rel="stylesheet" href="../../styles.css" />
+    <link rel="stylesheet" href="../../tic.css" />
+  </head>
+  <header>
+    <div class="mainLogo"><img src="../../resources/logo.png"></div>
+    <nav class="mainNav">
+      <ul>
+        <li><a href="/wdd330/index.html">Home</a></li>
+        <li><a href="#">About US</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </nav>
+    <div class="banner fixed container">
+      <div class="bannerImg">
+        <img src="../../resources/profile.png" class="profilePic" alt="my Photo">
+      </div>
+      <div class="bannerContent">
+      <p>WDD 330 Portfolio -
+      <span>Rio Michael Miranda</span>
+    </p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="gameContainer">
+      <div id="ticTac" class="tics">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            
+      </div>
+      <div id="nextplayer">Lets Start With Player X</div>
+      <div class="resetButtonContainer"><button class="resetBtn" id="reset_button">Reset Game</button></div>
+    </div>
+  </main>
+  
+
+<footer>
+  <div class="container">
+    <div class="footer-1">
+              <ul class="footer-menu">
+                <li><a href="/wdd330/index.html">Home</a></li>
+                <li><a href="#">About US</a></li>
+                <li><a href="#">Contact Us</a></li>
+              </ul>
+            </div>
+              <div class="footer-2">
+                <div class="footer-social-icons">
+                  <ul>
+                    <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                  </ul>
+              </div>
+              </div>
+              <div class="footer-copyright">
+                &copy; <span id="currentYear"></span>| Rio Michael Miranda
+              </div>
+          </div>
+        </footer>
+        
+        <!-- Table of content and footer note -->
+          <script src="/js/main.js"></script> 
+          <script>
+        
+            const ticTac = document.querySelector('#ticTac');
+            const resetBtn=document.getElementById("reset_button");
+            const ntic=document.querySelectorAll('#ticTac div');
+            //store the current player in array
+           
+              const currentPlayerX=[];
+              const currentPlayerO=[]; 
+
+            
+            function addDiv(clickDivs, currentPlayer){
+              const clickDiv=clickDivs.target;
+              clickDiv.innerHTML=changePlayer(currentPlayer);
+            
+            }
+
+            function changePlayer(currentPlayer){
+              //compare two arrays and determine who's next
+              if(currentPlayerX.length <= currentPlayerO.length){
+                  currentPlayer="X";
+                  currentPlayerX.push("X");
+              }
+              else{
+                currentPlayer="O";
+                currentPlayerO.push("O");
+              }
+              
+              whosnext(currentPlayer=="X"?nextplayer="O":nextplayer="X");
+              return currentPlayer;
+            }
+
+            function whosnext(currentPlayer){
+              document.getElementById('nextplayer').innerHTML=`Its player ${currentPlayer} Turn`;
+              //check Whos winning after 3 X or more is added
+            }
+
+            function resetGame(){
+              currentPlayerX.length=0;
+              currentPlayerO.length=0;
+             
+             for(x=0;x<ntic.length;x++){
+               ntic[x].innerHTML="";
+             }
+            document.getElementById('nextplayer').innerHTML="Lets Start With Player X";
+            }
+
+            //stretch
+          
+
+
+            ticTac.addEventListener("click", addDiv);
+            resetBtn.addEventListener("click", resetGame);
+            
+            
+
+
+
+          </script>
+        
+</body>
+</html>

@@ -1,0 +1,50 @@
+#ticTac{
+ 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+    div{
+       border-bottom: 1px solid black; 
+       border-right: 1px solid black;
+       height: 150px;
+       width: 150px;
+       cursor: pointer;
+       font-size: 50px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+    }
+    div:nth-child(3n+3){
+            border-right: none;
+    }
+    div:nth-last-child(-n+3){
+        border-bottom: none;
+    }
+
+}
+
+.gameContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .resetBtn{
+        min-width: 300px;
+        padding:30px;
+        font-size: 18px;
+        text-transform: uppercase;
+        border: 1px solid #917205;
+        background: transparent;
+
+        &:hover{
+            background:#F0CA47;
+            color:#fff;
+            border: 1px solid #917205;
+            cursor: pointer;
+        }
+    }
+    #nextplayer{
+        padding:20px;
+    }
+}
