@@ -164,10 +164,23 @@ nav ul li a {
   text-transform: uppercase;
 }
 
+.headerTitle {
+  display: block;
+  font-size: 1.2em;
+  padding: 1em 0;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.keyword {
+  font-style: italic;
+  font-weight: 600;
+}
+
 h1 {
   background-color: #F0CA47;
   color: #fff;
-  padding: 1em;
+  padding: .2em;
   text-align: center;
 }
 
