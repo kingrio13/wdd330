@@ -25,18 +25,12 @@ export default class TodoController {
             this.addDEListner();
             this.footerListener();
             this.todoView.addRemoveStrike();
-            
-
         }
         else if(this.listStatus=="active"){
             this.todoView.renderActiveList(this.todoModel.getAllList(),ulActive, this.listStatus);
             this.addDEListner();
             this.footerListener();
             this.todoView.addRemoveStrike();
-            console.log(this.listStatus);
-        
-
-            //add active show list here
         }
         else if(this.listStatus=="complete"){
             this.todoView.renderActiveList(this.todoModel.getAllList(),ulActive, this.listStatus);
@@ -51,7 +45,29 @@ export default class TodoController {
     }
 
     
-    
+    btnActive(){
+            // you can use this functions in the future
+
+
+            const allBtn=document.getElementById("allBtn");
+            const activeBtn=document.getElementById("activeBtn");
+            const completeBtn=document.getElementById("completeBtn");
+
+            activeBtn.removeAttribute("class");
+            allBtn.removeAttribute("class");
+            completeBtn.removeAttribute("class");
+
+            if(this.listStatus=="all"){
+                allBtn.setAttribute("class","todolistActive");
+            }
+            else if(this.listStatus=="active"){
+                activeBtn.setAttribute("class","todolistActive");
+            }
+            else if(this.listStatus=="complete"){
+                completeBtn.setAttribute("class","todolistActive");
+                
+            }
+    }
 
     addListener(){
         
@@ -64,7 +80,11 @@ export default class TodoController {
             this.todoModel.addListStorage(todoInput.value);
             todoInput.value="";
             this.listStatus="active";
+            //make btn active 
+            this.btnActive();
             this.showAllList(this.listStatus);
+
+            
         }
         else{
             alert("Please Enter Content")
@@ -114,21 +134,41 @@ export default class TodoController {
          const activeBtn=document.getElementById("activeBtn");
          const completeBtn=document.getElementById("completeBtn");
 
-         allBtn.addEventListener("click", allBtn=>{
-             this.listStatus="all";
+         
+         allBtn.addEventListener("click", allBtns=>{
+            
+            if(this.listStatus!="all"){//saving memory
+            this.listStatus="all";
             this.showAllList(this.listStatus);
+
+            allBtn.setAttribute("class","todolistActive");
+            activeBtn.removeAttribute("class");
+            completeBtn.removeAttribute("class");
+            }
         })
 
 
-        activeBtn.addEventListener("click", activeBtn=>{
+        activeBtn.addEventListener("click", activeBtns=>{
+            if(this.listStatus!="active"){//saves memory not to push
             this.listStatus="active";
             this.showAllList(this.listStatus);
+
+            activeBtn.setAttribute("class","todolistActive");
+            allBtn.removeAttribute("class");
+            completeBtn.removeAttribute("class");
+            }
         })
 
 
-         completeBtn.addEventListener("click", completeBtn=>{
+         completeBtn.addEventListener("click", completeBtns=>{
+            if(this.listStatus!="complete"){//saves memory
             this.listStatus="complete";
             this.showAllList(this.listStatus);
+
+            completeBtn.setAttribute("class","todolistActive");
+            allBtn.removeAttribute("class");
+            activeBtn.removeAttribute("class");
+            }
         })
 
 

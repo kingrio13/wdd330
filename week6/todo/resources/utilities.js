@@ -52,21 +52,9 @@ divFooter.appendChild(inputAll);
 divFooter.appendChild(inputActive);
 divFooter.appendChild(inputCompleted);
 
-//all
-//completed
-//active
-
-
-
-
-
-
-
-
 
 todoTask.appendChild(divTodo);
 divtodoContainer.appendChild(divActive)
 divtodoContainer.appendChild(divFooter)
 
 todoTask.appendChild(divtodoContainer);
-

@@ -8,7 +8,28 @@ export default class TodoView {
         divActive.innerHTML="";
         ulActive.innerHTML="";
         activeTitle.innerHTML=""
+        this.count=0;
+    }
+
+
+    countList(status){
+     
+
+        let noteContent=document.createElement("span");
+            noteContent.setAttribute("id","noteList")
+       if(status=="all"){
+             noteContent.innerHTML="There's no Completed nor active list";
+        }
+        else if(status=="active"){
+            noteContent.innerHTML="There's no Active TODO List Here";
+        }
+        else if(status=="complete"){
+            noteContent.innerHTML="There's no completed TODO List Here";
+        }
+            ulActive.appendChild(noteContent);
+
         
+
     }
 
 
@@ -29,7 +50,13 @@ export default class TodoView {
                 for(let x=0; x<activelists.length; x++){
                     let i=localStorage.key(x);
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
+                 
                 }
+
+                (activelists.length==0)?this.countList(status):false;
+                this.count=0;
+
+
                  divActive.appendChild(ulActive);   
                  
                 break;
@@ -43,8 +70,11 @@ export default class TodoView {
                     let nlistshow=JSON.parse(activelists[i]);
                     if(nlistshow.completed==false){
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
+                    this.count +=1;
                     }
                 }
+                (this.count==0)?this.countList(status):false;
+                this.count=0;
                  divActive.appendChild(ulActive);  
 
                 break;
@@ -57,8 +87,11 @@ export default class TodoView {
                     let nlistshow=JSON.parse(activelists[i]);
                     if(nlistshow.completed==true){
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
+                    this.count +=1;
                     }
                 }
+                (this.count==0)?this.countList(status):false;
+                this.count=0;
                  divActive.appendChild(ulActive);  
                 break;
         }

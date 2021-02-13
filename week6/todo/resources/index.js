@@ -10,4 +10,8 @@ window.addEventListener("load", () => {
  
   showlist.addListener();
 
+  //initial class active on all btnk
+  const allBtn=document.getElementById("allBtn");
+  allBtn.setAttribute("class","todolistActive");
+
 });
