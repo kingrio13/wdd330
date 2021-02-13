@@ -1,6 +1,10 @@
 html {
     scroll-behavior: smooth;
   }
+
+  main{
+      width: 100%;
+  }
   
 div#divActive>h2 {
     border-bottom: 2px solid black;
@@ -13,7 +17,7 @@ div#divActive>h2 {
    
     input[type=text]{
             width: auto;
-            max-width: 500px;
+            max-width:90%;
             font-size: 2em;
     }
     input[type=button]{
@@ -32,7 +36,7 @@ div#divActive>h2 {
 }
 
 #todoContainer{
-    max-width: 600px;
+    width: auto;
     margin:auto;
 }
 
@@ -113,7 +117,7 @@ div#divActive>h2 {
 
 #divFooter{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     border-top: 1px solid #e3e3e3;
         
     span{
@@ -121,7 +125,7 @@ div#divActive>h2 {
         cursor: pointer;
         text-transform: uppercase;
         margin-top:20px;
-        padding: .2em 1em;
+        // padding: .2em 1em;
         opacity: .6;
         transition: .2s;
         
@@ -139,4 +143,17 @@ div#divActive>h2 {
         border-radius: 50px;
         opacity: 1;
     }
+}
+
+span#countList{
+    font-style: italic;
+    font-size: 12px;
+    background: none;
+    cursor:text;
+    &:hover{background: none;}
+}
+
+#todoTask{
+    max-width: 700px;
+    margin: auto;
 }

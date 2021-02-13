@@ -33,6 +33,9 @@ divActive.appendChild(ulActive);
 let divFooter=document.createElement("div");
 divFooter.setAttribute("id", "divFooter");
 
+let countList=document.createElement("span");
+countList.setAttribute("id","countList");
+countList.innerHTML=""
 
 let inputAll=document.createElement("span");
 inputAll.setAttribute("id","allBtn");
@@ -47,7 +50,7 @@ inputCompleted.setAttribute("id","completeBtn");
 inputCompleted.innerHTML="Completed"
 
 
-
+divFooter.appendChild(countList);
 divFooter.appendChild(inputAll);
 divFooter.appendChild(inputActive);
 divFooter.appendChild(inputCompleted);

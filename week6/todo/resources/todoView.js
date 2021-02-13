@@ -40,18 +40,30 @@ export default class TodoView {
         let activeTitle=document.createElement("h2");
         activeTitle.setAttribute("id","statusTitle");
         this.clearList(ulActive, divActive, activeTitle);//clear all
+        let countList=document.getElementById("countList");
         let newstatus;
+        let countActive=0;
         
         switch(status){
             case "all":
+             
                 newstatus="All List";
                 activeTitle.innerHTML=newstatus;
                 divActive.appendChild(activeTitle);
+               
+                
                 for(let x=0; x<activelists.length; x++){
                     let i=localStorage.key(x);
+                    let nlistshow=JSON.parse(activelists[i]);
+
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
+
+                    if(nlistshow.completed==false){
+                        countActive +=1;
+                    }
                  
                 }
+                countList.innerHTML=`${countActive} Task Left`;
 
                 (activelists.length==0)?this.countList(status):false;
                 this.count=0;
@@ -71,8 +83,10 @@ export default class TodoView {
                     if(nlistshow.completed==false){
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
                     this.count +=1;
+                    countActive +=1;
                     }
                 }
+                countList.innerHTML=`${countActive} Task Left`;
                 (this.count==0)?this.countList(status):false;
                 this.count=0;
                  divActive.appendChild(ulActive);  
@@ -88,9 +102,12 @@ export default class TodoView {
                     if(nlistshow.completed==true){
                     ulActive.appendChild(this.renderAlist(activelists[i], i,status));
                     this.count +=1;
+                    }else{
+                        countActive +=1;
                     }
                 }
                 (this.count==0)?this.countList(status):false;
+                countList.innerHTML=`${countActive} Task Left`;
                 this.count=0;
                  divActive.appendChild(ulActive);  
                 break;
