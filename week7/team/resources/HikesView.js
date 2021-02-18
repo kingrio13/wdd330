@@ -1,11 +1,11 @@
-import HikesController from "./HikesController.js";
+
 
  // Hike View handler
  export default class HikesView {
     constructor(listElementId) {
         // will need this
         this.imgBasePath = '//byui-cit.github.io/cit261/examples/';  
-        //this.hikescontroller = new HikesController();
+      
     }
 
 renderHikeList(hikes, parent) {
@@ -18,7 +18,7 @@ renderHikeList(hikes, parent) {
  
 renderOneHike(hike) {
     const item = document.createElement("li");
-  
+    item.setAttribute('data-name',hike.name);
     item.innerHTML = ` <h2>${hike.name}</h2>
           <div class="image"><img src="${this.imgBasePath}${hike.imgSrc}" alt="${hike.imgAlt}"></div>
           <div>
@@ -28,7 +28,7 @@ renderOneHike(hike) {
                   </div>
                   <div>
                       <h3>Difficulty</h3>
-                      <p>${hike.difficulty}</p>
+                      <p>${hike.description}</p>
                   </div>
           </div>`;
   
@@ -43,6 +43,7 @@ renderOneHike(hike) {
     const btnContainer = document.createElement("div");
     btnContainer.setAttribute("class","btnContainer")
     const item = document.createElement("li");
+    item.setAttribute('data-name',hike.name);
     const backbtn=document.createElement("button");
     backbtn.setAttribute("id","hikelist")
     backbtn.innerHTML="Back";
@@ -67,10 +68,24 @@ renderOneHike(hike) {
                   <h3>directions</h3>
                   <p>${hike.directions}</p>
                   </div>
-          </div>`;
+          </div>
+          
+          `;
+    const divCommentboxContainer = document.createElement('div');
+    divCommentboxContainer.setAttribute('class', 'divCommentboxContainer')
+    divCommentboxContainer.innerHTML=`
+          <div class="commentContainer">
+          <textarea id="newComment" rows="4" cols="50" placeholder="Comment Here.."></textarea>
+          <input type="button" id="addComment" Value="submit">
+          </div>
+          <div id="commentLists"></div>
+          
+          `;
+          
     btnContainer.appendChild(backbtn)
     divContainer.appendChild(btnContainer);
     divContainer.appendChild(item);
+    divContainer.appendChild(divCommentboxContainer);
     parentElement.appendChild(divContainer);
   }
 
