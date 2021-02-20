@@ -128,7 +128,7 @@ margin-top:20px;
 
 #comments{
   width:90%;
-  margin:auto;
+  margin:20px auto 20px auto;
   display: grid;
   grid-template-columns: 1fr;
   ul{
@@ -213,4 +213,14 @@ margin-top:20px;
     }
   }
 
+}
+
+.listSelect{
+  display: flex;
+  justify-content: flex-end;
+  select{
+    max-width: 300px;
+    width: 100%;
+    font-size: 1.2em;
+  }
 }

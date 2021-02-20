@@ -43,6 +43,29 @@ renderComment(comment){
     return item;
 }
 
+renderCommentType(keys){
+ 
+  if(keys.length>1){
+      const commentID=document.querySelector('#comments h2');
+      const selectBoxContainer=document.createElement('div');
+      selectBoxContainer.setAttribute('class', 'listSelect');
+      let listBox=document.createElement('select');
+      
+      keys.forEach(listType => {
+        let optionBox=document.createElement('option');
+        optionBox.value=listType;
+        optionBox.textContent=listType;
+        listBox.appendChild(optionBox)
+      });
+      selectBoxContainer.appendChild(listBox)
+
+
+      commentID.parentNode.insertBefore(selectBoxContainer, commentID);
+      console.log(listBox);
+  }
+
+}
+
 
 showSingleComment(commentbyName){
   if(commentbyName.length>0){

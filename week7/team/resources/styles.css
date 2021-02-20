@@ -126,7 +126,7 @@ ul {
 
 #comments {
   width: 90%;
-  margin: auto;
+  margin: 20px auto 20px auto;
   display: grid;
   grid-template-columns: 1fr;
 }
@@ -206,5 +206,16 @@ ul {
   font-size: 10px;
   display: block;
   color: #757474;
+}
+
+.listSelect {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.listSelect select {
+  max-width: 300px;
+  width: 100%;
+  font-size: 1.2em;
 }
 /*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Week 7 Notes</title>
+    <link rel="stylesheet" href="../../styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="mainLogo"><img src="../../resources/logo.png"></div>
+      <nav class="mainNav">
+        <ul>
+          <li><a href="/wdd330/index.html">Home</a></li>
+          <li><a href="#">About US</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </nav>
+      <div class="banner fixed container">
+        <div class="bannerImg">
+          <img src="../../resources/profile.png" class="profilePic" alt="my Photo">
+        </div>
+        <div class="bannerContent">
+        <p>WDD 330 Portfolio -
+        <span>Rio Michael Miranda</span>
+      </p>
+        </div>
+      </div>
+    </header>
+ 
+    <main>
+    <h1>Weeek 7 Notes</h1>
+
+    <section>
+    <p>
+      <span class="headerTitle">Immediately-invoked Function Expression</span>
+
+      You dont need to call the function as it will immediately run even without user's interaction.
+    </p> 
+
+    <code>
+      (function() {<br>
+        /* */{<br>
+      })(){<br>
+    </code>
+
+    <p><i>or it could be..</i></p>
+    <code>
+      (() => {<br>
+        /* */<br>
+      })()<br>
+    </code>
+
+    <p>IIFE is used as they dont pollute global objects.</p>
+  
+  </section>
+
+  <section>
+    <p>
+    <span class="headerTitle">Call Back</span>
+    Is a function pass to another function and execute when there's event usually event listner.
+  </p>
+  <code>
+    const myBtn=document.getElementByID('myBtn');<br>
+    myBtn.addEventListener('Click',function(){<br>
+      /*Do Something Here*/<br>
+    });<br>
+  </code>
+  <p><i>or you can use the arrow function.</i></p>
+  </section>
+
+
+  <section>
+    <p><span class="headerTitle">Promises</span></p>
+    <p>these are functions that run in conditions. Condition like if and else, else if and Switch Case</p>
+  </section>
+
+
+  <section>
+      <p>JSON Responses</p>
+
+      <p>JSON is the most common format for Ajax Responses, From this code, this will turn to object where you can show their properties using JS</p>
+      <code>
+      const requestURL = '';<br>
+      fetch(requestURL)<br>
+        .then(function (response) {<br>
+          return response.json();<br>
+        })<br>
+        .then(function (jsonObject) {<br>
+          <br>
+          <br>
+          <br>
+          }<br>
+          <br>
+        });<br>
+      </code>
+      
+       
+      
+  </section>
+
+
+
+
+    </main>
+
+    
+  <footer>
+    <div class="container">
+      <div class="footer-1">
+                <ul class="footer-menu">
+                  <li><a href="/wdd330/index.html">Home</a></li>
+                  <li><a href="#">About US</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                </ul>
+              </div>
+                <div class="footer-2">
+                  <div class="footer-social-icons">
+                    <ul>
+                      <li><a href="#"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-medium" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                      <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                </div>
+                <div class="footer-copyright">
+                  &copy; <span id="currentYear"></span>| Rio Michael Miranda
+                </div>
+            </div>
+          </footer>
+          
+          <!-- Table of content and footer note -->
+            <script src="/js/main.js"></script> 
+          
+  </body>
+  </html>

@@ -31,10 +31,16 @@ export default class HikesController {
      const comments=document.getElementById("comments");
      comments.innerHTML="";
      this.commentView.renderAllComment(this.commentModel.getAllComment(), comments);
-
+     this.commentView.renderCommentType(this.commentModel.getCommentType());
+     //this.commentModel.getCommentType();
 
      this.addHikeListener()
   }
+
+
+  
+
+
 
   showOneHike(hikeName) {
    const hikeListElement = document.getElementById("hikes");
