@@ -33,6 +33,8 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
         if(newPoke.count>1){
           //view of next and previous
           renderNextPrev();
+          renderPagination(newPoke.count);
+          
           //event Listener for Next and Previous
           eventNextPrev(newPoke.previous, newPoke.next);
           }
@@ -40,6 +42,33 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
     })
   }
 
+
+//if you cannot rewerite the for loop, maybe addevent later on.
+
+
+
+  function renderPagination(pokeCount){
+    // console.log('check if this one is showed always')
+
+    const poke_pagination=document.querySelector('#poke_pagination');
+    const pokePagiCon=document.createElement('div');
+    pokePagiCon.setAttribute('class','pagiContainer');
+    const endToCreate=Math.ceil(pokeCount/20);
+
+    for(let x=1; x<=endToCreate; x++){
+      const btnCreate=document.createElement('input');
+      btnCreate.setAttribute('type','button');
+      btnCreate.setAttribute('value',x);
+      btnCreate.addEventListener("click",()=>{
+        let urlNum=(x*20)-20;
+        const pokeURL=`https://pokeapi.co/api/v2/pokemon?offset=${urlNum}&limit=20`
+        showPokemon(pokeURL);
+      })
+      pokePagiCon.appendChild(btnCreate);
+      poke_pagination.appendChild(pokePagiCon);
+      
+    }
+  }
 
 
   //model
@@ -73,7 +102,7 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
     const parentID=document.querySelector('#poke_pagination')
     let item=document.createElement('li');
     let ulList=document.createElement('ul');
-    item.innerHTML=`<a id="prev" href="#">&lt;-Prev</a> <a id="next" href="#">Next -&gt;</a>`;
+    item.innerHTML=`<a id="prev" href="#">Previous</a> <a id="next" href="#">Next</a>`;
     ulList.appendChild(item)
     parentID.appendChild(ulList);
   }

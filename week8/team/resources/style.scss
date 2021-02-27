@@ -25,24 +25,56 @@
 
 main{
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 1.5fr 3fr;
     margin:0;
     padding:0;
 
-    #specificPokemon{
-        background: #ececec;
-    }
+  
 }
 
 .pokemonInfoContainer{
     width: 90%;
     flex-wrap: wrap;
     margin: auto;
+    margin-top:50px;
     padding:20px;
+    max-width: 300px;
+    box-shadow: 2px 2px 25px #333;
     img{
         max-height: 150px;
+        display: block;
+        margin: auto;
     }
     span{
         display: block;
     }
+    h1, h3{
+        margin-bottom: 0px;
+    }
+}
+
+#poke_pagination{
+        ul li{
+            list-style: none;
+        }
+#prev, #next{
+    padding:5px;
+    border:1px solid #2b2a2a;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+}
+
+
+.pagiContainer{
+    display:flex;
+    flex-wrap: wrap;
+    input{
+        padding: 2px;
+        margin: 2px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
+
 }

@@ -172,7 +172,7 @@ nav ul li a {
 .headerTitle {
   display: block;
   font-size: 1.2em;
-  padding: 1em 0;
+  padding: 1em 0em .3em 0em;
   text-transform: uppercase;
   font-weight: 700;
 }
