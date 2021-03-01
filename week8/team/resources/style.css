@@ -78,4 +78,27 @@ main {
   height: 30px;
   cursor: pointer;
 }
+
+#poke_pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#poke_pagination .btn_prev {
+  order: 1;
+}
+
+#poke_pagination .btn_next {
+  order: 3;
+}
+
+#poke_pagination .pagiContainer {
+  order: 2;
+}
+
+#poke_pagination .pagiContainer .btn_hide {
+  display: none;
+}
 /*# sourceMappingURL=style.css.map */

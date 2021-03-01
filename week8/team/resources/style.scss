@@ -78,3 +78,23 @@ main{
     }
 
 }
+
+#poke_pagination{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    .btn_prev{
+        order:1
+    }
+    .btn_next{
+        order:3;
+    }
+    .pagiContainer{
+        order:2;
+
+        .btn_hide{
+            display: none;
+        }
+    }
+}

@@ -10,9 +10,7 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
 
   //clear view content
   function clearView(){
-    const parentID=document.querySelector('#poke_pagination');
     const listelementID=document.querySelector('#pokeContent');
-    parentID.innerHTML="";
     listelementID.innerHTML="";
   }
 
@@ -45,6 +43,36 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
 
 //if you cannot rewerite the for loop, maybe addevent later on.
 
+function activePagination(x, endToCreate){
+        //get Active Pagination. + 10 of it will have class
+        //
+
+        console.log(x);
+        console.log(endToCreate);
+
+        const listPag= document.querySelectorAll('.pagiContainer input');
+
+        
+        for(let i=0; i<=endToCreate; i++){
+            if(i>=x && i<=x+10){
+              listPag[i].removeAttribute('class');
+              console.log(listPag[i]);
+            }
+            else{              
+              
+              listPag[i].classList.add("btn_hide");
+              console.log("Hide them", i);
+            }
+        }
+
+        
+        //need a for loop here. hide
+
+        //first add class 
+
+}
+
+
 
 
   function renderPagination(pokeCount){
@@ -59,15 +87,28 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
       const btnCreate=document.createElement('input');
       btnCreate.setAttribute('type','button');
       btnCreate.setAttribute('value',x);
+
+      if(x>10){
+        btnCreate.setAttribute('class','btn_hide');
+      }
       btnCreate.addEventListener("click",()=>{
         let urlNum=(x*20)-20;
         const pokeURL=`https://pokeapi.co/api/v2/pokemon?offset=${urlNum}&limit=20`
         showPokemon(pokeURL);
+        activePagination(x,endToCreate)
       })
       pokePagiCon.appendChild(btnCreate);
       poke_pagination.appendChild(pokePagiCon);
-      
     }
+
+
+    renderPagination =function(){
+      //we dont want this to run  again
+
+    }
+
+
+
   }
 
 
@@ -100,11 +141,32 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
   //view
   function renderNextPrev(){
     const parentID=document.querySelector('#poke_pagination')
-    let item=document.createElement('li');
-    let ulList=document.createElement('ul');
-    item.innerHTML=`<a id="prev" href="#">Previous</a> <a id="next" href="#">Next</a>`;
+    
+    let ulList=document.createElement('div');
+    ulList.setAttribute('class','btn_prev');
+    let item=document.createElement('span');
+    item.innerHTML=`<a id="prev" href="#">Previous</a>`;
     ulList.appendChild(item)
     parentID.appendChild(ulList);
+
+
+
+
+    let ulList2=document.createElement('div');
+    ulList2.setAttribute('class','btn_next');
+    let item2=document.createElement('span');
+    item2.innerHTML=`<a id="next" href="#">Next</a>`;
+    ulList2.appendChild(item2)
+    parentID.appendChild(ulList2);
+
+
+    renderNextPrev = function(){
+      //putting this empty as we dont want this to render again
+    }
+
+
+
+    
   }
 
   function renderPokemonList(newpokemon, listelementID){
