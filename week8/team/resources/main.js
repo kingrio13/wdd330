@@ -1,7 +1,6 @@
 const requestURL = 'https://pokeapi.co/api/v2/pokemon';
+let  mike=0;
 
-
-  //controller
   function showPokemon(url){
     const listelementID=document.querySelector('#pokeContent');
     clearView();
@@ -12,7 +11,10 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
   function clearView(){
     const listelementID=document.querySelector('#pokeContent');
     listelementID.innerHTML="";
+    
   }
+
+  
 
 
   //model
@@ -24,46 +26,64 @@ const requestURL = 'https://pokeapi.co/api/v2/pokemon';
 
   //controller and model
   function renderPokemon(url, listelementID){
+    console.log(url);
     getPokemon(url).then(function (newPoke) {
-      // console.log(newPoke);
         const dataPokemon=newPoke.results;
         renderPokemonList(dataPokemon, listelementID);        
-        if(newPoke.count>1){
-          //view of next and previous
+     
           renderNextPrev();
           renderPagination(newPoke.count);
-          
-          //event Listener for Next and Previous
-          eventNextPrev(newPoke.previous, newPoke.next);
-          }
+
+          let lPrev=newPoke.previous;
+          let lNext=newPoke.next;
+
+
+          const btnPrev=document.querySelector("#prev");
+          const btnNext=document.querySelector('#next');
+
+             if(lPrev){
+            btnPrev.onclick = () =>{
+              btnNext.removeAttribute('class');
+              showPokemon(lPrev);
+            }}else{
+             btnPrev.classList.add('disabled'); 
+            }
+
+
+
+           if(lNext){
+            btnNext.onclick=()=>{
+              btnPrev.removeAttribute('class');
+              showPokemon(lNext);
+            }}else{
+              btnNext.classList.add('disabled')
+            }
 
     })
   }
 
 
-//if you cannot rewerite the for loop, maybe addevent later on.
+
 
 function activePagination(x, endToCreate){
-        //get Active Pagination. + 10 of it will have class
-        //
 
-        console.log(x);
-        console.log(endToCreate);
 
         const listPag= document.querySelectorAll('.pagiContainer input');
 
         
         for(let i=0; i<=endToCreate; i++){
-            if(i>=x && i<=x+10){
+            if(i>=x-1 && i<=x+8){
               listPag[i].removeAttribute('class');
-              console.log(listPag[i]);
             }
-            else{              
-              
-              listPag[i].classList.add("btn_hide");
-              console.log("Hide them", i);
+            else{   
+                if(i<=endToCreate-1){
+                listPag[i].classList.add('btn_hide');
+              }
+            
             }
         }
+
+
 
         
         //need a for loop here. hide
@@ -112,10 +132,7 @@ function activePagination(x, endToCreate){
   }
 
 
-  //model
-  function specificPokemon(url){
-    console.log("show specific pokemon and information", url);
-  }
+  
  
   //eventListener
   function eventNextPrev(lPrev, lNext){
@@ -123,17 +140,21 @@ function activePagination(x, endToCreate){
     const btnNext=document.querySelector('#next');
 
     if(lPrev){
-    btnPrev.addEventListener("click", prevClick=>{
+    btnPrev.addEventListener("click",()=>{
       showPokemon(lPrev);
     })
   }
 
-
+  console.log('MIKE ON CLICK',mike=mike+1,lNext);
   if(lNext){
-    btnNext.addEventListener("click",nextClick=>{
+    btnNext.addEventListener("click",()=>{
       showPokemon(lNext);
     })
   }
+
+
+
+
 
   }
 
@@ -193,7 +214,7 @@ function pokemonList(newpoke){
 //model
 function getPokemonInfo(url){
   getPokemon(url).then(function (newPoke) {
-      console.log(newPoke);
+      
       renderPokeInfo(newPoke);
   });
 }
