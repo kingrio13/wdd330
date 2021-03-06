@@ -98,3 +98,14 @@ main{
         }
     }
 }
+
+.btnActive{
+    background: #e8c346;
+    border: none;
+
+}
+
+#poke_pagination input:hover, #poke_pagination div a:hover{
+    background: #e8c346;
+}
+

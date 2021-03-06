@@ -22,16 +22,20 @@ const links = [
         url: "week5/index.html"
       },
       {
-        label: "Week 6 Todo",
+        label: "Week 6",
         url: "week6/todo/index.html"
       },
       {
-        label: "Week 7 Todo",
+        label: "Week 7",
         url: "week7/index.html"
       },
       {
-        label: "Week 8 Todo",
+        label: "Week 8",
         url: "week8/index.html"
+      },
+      {
+        label: "Week 9",
+        url: "week9/index.html"
       }
   ]
 

@@ -5,8 +5,10 @@ let  mike=0;
     const listelementID=document.querySelector('#pokeContent');
     clearView();
     renderPokemon(url, listelementID);
+    
   }
 
+ 
   //clear view content
   function clearView(){
     const listelementID=document.querySelector('#pokeContent');
@@ -26,7 +28,7 @@ let  mike=0;
 
   //controller and model
   function renderPokemon(url, listelementID){
-    console.log(url);
+    //console.log(url);
     getPokemon(url).then(function (newPoke) {
         const dataPokemon=newPoke.results;
         renderPokemonList(dataPokemon, listelementID);        
@@ -41,10 +43,30 @@ let  mike=0;
           const btnPrev=document.querySelector("#prev");
           const btnNext=document.querySelector('#next');
 
+          const listPagRef = document.querySelector('.pagiContainer .btnActive');
+          
+
+
              if(lPrev){
             btnPrev.onclick = () =>{
               btnNext.removeAttribute('class');
               showPokemon(lPrev);
+              
+              //const listPagRef2 = document.querySelectorAll('.pagiContainer .btn_show');
+             
+
+              // if(listPagRef2.length==10){
+              //   listPagRef2[0].classList.remove('btn_show');
+              //   listPagRef2[0].classList.add('btn_hide');
+              // }
+
+              listPagRef.previousSibling.classList.add('btnActive');
+              listPagRef.previousSibling.classList.add('btn_show');
+              listPagRef.previousSibling.classList.remove('btn_hide');
+             
+
+
+
             }}else{
              btnPrev.classList.add('disabled'); 
             }
@@ -55,6 +77,20 @@ let  mike=0;
             btnNext.onclick=()=>{
               btnPrev.removeAttribute('class');
               showPokemon(lNext);
+
+              const listPagRef2 = document.querySelectorAll('.pagiContainer .btn_show');
+             
+
+              if(listPagRef2.length==10){
+                listPagRef2[0].classList.remove('btn_show');
+                listPagRef2[0].classList.add('btn_hide');
+              }
+
+              listPagRef.nextSibling.classList.add('btnActive');
+              listPagRef.nextSibling.classList.add('btn_show');
+              listPagRef.nextSibling.classList.remove('btn_hide');
+             
+              
             }}else{
               btnNext.classList.add('disabled')
             }
@@ -73,11 +109,13 @@ function activePagination(x, endToCreate){
         
         for(let i=0; i<=endToCreate; i++){
             if(i>=x-1 && i<=x+8){
-              listPag[i].removeAttribute('class');
+              listPag[i].classList.remove('btn_hide');
+              listPag[i].classList.add('btn_show');
             }
             else{   
                 if(i<=endToCreate-1){
                 listPag[i].classList.add('btn_hide');
+                listPag[i].classList.remove('btn_show');
               }
             
             }
@@ -92,7 +130,14 @@ function activePagination(x, endToCreate){
 
 }
 
+function defaultActive(){
+    const btnActive=document.querySelector('.pagiContainer input');
+    btnActive.classList.add('btnActive');
 
+    defaultActive=function(){
+
+    }
+}
 
 
   function renderPagination(pokeCount){
@@ -111,19 +156,38 @@ function activePagination(x, endToCreate){
       if(x>10){
         btnCreate.setAttribute('class','btn_hide');
       }
+      else{
+        btnCreate.setAttribute('class','btn_show');
+      }
+        
+      
+      
+      btnCreate.classList.remove('btnActive');
+     
+      
       btnCreate.addEventListener("click",()=>{
         let urlNum=(x*20)-20;
         const pokeURL=`https://pokeapi.co/api/v2/pokemon?offset=${urlNum}&limit=20`
         showPokemon(pokeURL);
-        activePagination(x,endToCreate)
+     
+        btnCreate.classList.add('btnActive');
+        activePagination(x,endToCreate);
       })
       pokePagiCon.appendChild(btnCreate);
       poke_pagination.appendChild(pokePagiCon);
+      if(x==1){
+        defaultActive();
+      }
+
     }
+
+   
 
 
     renderPagination =function(){
-      //we dont want this to run  again
+      //we dont want this to run  again.
+      const  btnCreate=document.querySelector('.pagiContainer .btnActive');
+      btnCreate.classList.remove('btnActive');
 
     }
 
@@ -134,30 +198,6 @@ function activePagination(x, endToCreate){
 
   
  
-  //eventListener
-  function eventNextPrev(lPrev, lNext){
-    const btnPrev=document.querySelector("#prev");
-    const btnNext=document.querySelector('#next');
-
-    if(lPrev){
-    btnPrev.addEventListener("click",()=>{
-      showPokemon(lPrev);
-    })
-  }
-
-  console.log('MIKE ON CLICK',mike=mike+1,lNext);
-  if(lNext){
-    btnNext.addEventListener("click",()=>{
-      showPokemon(lNext);
-    })
-  }
-
-
-
-
-
-  }
-
 
   //view
   function renderNextPrev(){
