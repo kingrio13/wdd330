@@ -4,9 +4,9 @@ import { getJSON } from "./utilities.js";
 
 export default class sportsModel {
     constructor() {
-        this.baseUrl ="http://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
-        this.allteams="http://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/";
-        this.nbaScore="http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard";
+        this.baseUrl ="https://site.api.espn.com/apis/site/v2/sports/basketball/nba/news";
+        this.allteams="https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/";
+        this.nbaScore="https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard";
 
 
         this.sportsNews = [];
