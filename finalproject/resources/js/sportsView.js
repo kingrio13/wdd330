@@ -102,6 +102,26 @@ export default class sportsView {
 
     renderNewsContent(content,element){
         content.then(function(result) {
+
+           let commentbox=document.createElement('textarea');
+
+
+           let commentName=document.createElement('input');
+           commentName.setAttribute("type","name");
+           let commentNameLabel=document.createElement('label');
+           commentNameLabel.innerHTML="Name:"
+
+           let commentEmail=document.createElement('input'); 
+           commentEmail.setAttribute("type","email");
+           let commentEmailLabel=document.createElement('label');
+           commentEmailLabel.innerHTML="Email:"
+
+           let commentSubmit=document.createElement('input'); 
+            commentSubmit.innerHTML="Submit";
+
+           let commentDiv=document.createElement('div');
+           commentDiv.setAttribute('class','commentForm');
+
            let newStory=result.headlines[0].story;
             newStory=newStory.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
@@ -114,6 +134,23 @@ export default class sportsView {
             ${newStory}
             </p>
             `;
+
+            commentDiv.innerHTML="<h2>Comment:</h2>"
+
+            
+            commentNameLabel.appendChild(commentName);
+            commentDiv.appendChild(commentNameLabel);
+            
+            commentEmailLabel.appendChild(commentEmail);
+            commentDiv.appendChild(commentEmailLabel);
+
+            commentDiv.appendChild(commentbox);
+            commentDiv.appendChild(commentSubmit);
+
+            
+            element.appendChild(commentDiv);
+
+
            
           }).catch(function(reason) {
        
@@ -149,18 +186,31 @@ export default class sportsView {
         const item = document.createElement("div");
         item.setAttribute('class','nbaScoreBoard');
 
+        let nbatime="";
+        //&& content.status.displayClock==0.0
+        if(content.status.period<4 || content.status.clock!=0){
+            nbatime=`LIVE Q${content.status.period} ${content.status.displayClock}`;
+        }
+        else{
+            nbatime=`<b>FINAL</b>`;    
+        }
+
         item.innerHTML=`
-                
-                <img src="${content.competitions[0].competitors[0].team.logo}">
-                <span>${content.competitions[0].competitors[0].team.abbreviation}</span>
+                <div class="nbaVersusImg"><img src="${content.competitions[0].competitors[0].team.logo}"></div>
+                <span>${content.competitions[0].competitors[0].team.abbreviation}
+                        <span class="nbaSummary">${content.competitions[0].competitors[0].records[0].summary}</span>
+                </span>
                 <span>${content.competitions[0].competitors[0].score}</span>
                 
                 <span class="nbaversus">vs</span>
-                <img src="${content.competitions[0].competitors[1].team.logo}">
-                <span>${content.competitions[0].competitors[1].team.abbreviation}</span>
+                <div class="nbaVersusImg"><img src="${content.competitions[0].competitors[1].team.logo}"></div>
+                <span>${content.competitions[0].competitors[1].team.abbreviation}
+                <span class="nbaSummary">${content.competitions[0].competitors[1].records[0].summary}</span>
+                </span>
                 <span>${content.competitions[0].competitors[1].score}</span>
-                
-            `
+
+                <div class="nbaTime">${nbatime}</div>
+            `;
         return item;
 
     }

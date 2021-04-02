@@ -61,12 +61,119 @@ footer{
 
 //=====header======
 
+
+  .menu-icon-wrapper.active nav{
+  transform: translateX(0%);
+    z-index:-1;
+  }
+  
+  .menu-icon-wrapper{
+    width: 300px;
+    height:80px;
+    nav{
+    transform: translateX(-120%);
+     background:$mainColor;
+      height: 100vh;
+      
+      transition: all .5s ease-out;
+    }
+  }
+  
+  
+  
+  
+  .menu-icon {
+    position: absolute;
+    height: 28px;
+    width: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    top: 20px;
+    left: 10px;
+    
+    span,
+    span::before,
+    span::after {
+      position: absolute;
+      content: '';
+      width: 28px;
+      height: 2.5px;
+      background:$mainColor;
+      border-radius: 20px;
+    }
+    
+    span::before {
+      top: -8px;
+    }
+    
+    span::after {
+      top: 8px;
+    }
+    
+  }
+  
+  .menu-icon{
+    transform: translateX(0%);
+  }
+  
+  .menu-icon.open{
+    transform: translateX(250px);
+     z-index:99;
+  }
+  
+  .menu-icon-wrapper{
+     nav{
+  
+      ul{
+        li{
+          list-style:none;
+          padding:20px;
+          &:first-child{
+            padding-top:40px;
+          }
+          a{
+            text-decoration:none;
+              color:$mainbg;
+              font-size:1.2em;
+              &:hover{
+                color:lighten($mainbg, 40);
+                }
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  .menu-icon.open span{
+        background: transparent;
+  }
+  
+  
+
+  .menu-icon.open > span::before {
+      transform: rotate(-225deg);
+     @include span-open();
+  }
+  .menu-icon.open > span::after {
+      transform: rotate(225deg);
+      @include span-open();
+      
+  }
+  
+  
+    
+
+
 .navigation li .ham{
     display: block;
 }
 
 nav ul {
     list-style: none;
+    margin-top:0px;
     li{
         a{
         text-decoration: none;
@@ -146,6 +253,13 @@ section#mainContent{
             width: 50px;
             grid-row: 1/2 span;
         }
+
+        span:last-child{
+            font-size: 15px;
+            opacity: .8;
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 }
 
@@ -211,6 +325,21 @@ section#mainContent{
     grid-column: 1/4;
     text-align: center;
 }
+
+.nbaTime{
+    grid-row:4/4;
+    grid-column: 1/4;
+    text-align: center;
+}
+
+
+.nbaSummary{
+    font-size: 12px;
+    opacity: .7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;}
 
 #scoreboard{
 

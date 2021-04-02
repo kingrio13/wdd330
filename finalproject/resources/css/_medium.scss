@@ -113,3 +113,27 @@ section#sportsSection{
 #scoreboard{
         grid-template-columns: repeat(2,1fr);
 }
+
+#menu{
+    .menu-icon{
+        display: none;
+    }
+
+width: 100%;
+nav{
+    transform: unset;
+    background: $mainbg;
+    color:$mainColor;
+
+    li{
+        &:first-child{
+            padding-top:30px;
+          }
+        
+        a{
+            color: $mainColor;
+        }
+    }
+}
+}
+

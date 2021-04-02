@@ -9,16 +9,27 @@
     <link href="resources/finalProject.css" rel="stylesheet">
 </head>
 <body>
+
+
+
+
         <header>
-            <nav>
-                <ul class="navigation">
-                  <li><a class="ham" href="#">&#9776; Menu</a></li>
-                  <li><a href="index.html">Home</a></li>
-                  <li><a href="#">About US</a></li>
-                  <li><a href="#">Contact Us</a></li>
-                  <li><a href="#">Standing</a></li>
-                </ul>
-            </nav>
+          <div class="menu-icon-wrapper" id="menu">
+            <div class="menu-icon" id="menu-icon" onclick="toggleNav()">
+                          <span></span>
+                        </div>
+          
+                      <nav>
+                        
+                          <ul class="navigation">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">About US</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Standing</a></li>
+                          </ul>
+                      </nav>
+                    </div>
+
             <div class="hero">
                     <!-- <img src="https://images.pexels.com/photos/1075935/pexels-photo-1075935.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"> -->
             </div>
@@ -56,15 +67,17 @@
 
             </section>
 
+            
+
+            <section id="scoreboard">
+
+            </section>
+
             <section>
               <div class="gallery" id="nbaTeam">
               </div>
             </section>
 
-
-            <section id="scoreboard">
-
-            </section>
 
 
 
@@ -72,7 +85,7 @@
 
 
         <footer>
-            <div class="container">
+            <div class="footer-container">
                
               
             <div class="footer-row">
@@ -127,7 +140,7 @@
 
             </div>
           </footer>
-
+          <script src="resources/js/menu.js"></script>
           <script src="resources/js/copyright_date.js"></script>
           <script src="resources/js/index.js" type="module"></script>
 </body>

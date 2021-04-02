@@ -32,6 +32,12 @@ $normalFont:1.2em;
     margin:auto;
 }
 
+@mixin span-open{
+    top: 0px;
+   background: $mainbg;
+   z-index:99;
+ }
+
 
 
   $num-columns : 4;

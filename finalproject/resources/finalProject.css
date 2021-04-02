@@ -49,12 +49,106 @@ footer {
   grid-area: foot;
 }
 
+.menu-icon-wrapper.active nav {
+  transform: translateX(0%);
+  z-index: -1;
+}
+
+.menu-icon-wrapper {
+  width: 300px;
+  height: 80px;
+}
+
+.menu-icon-wrapper nav {
+  transform: translateX(-120%);
+  background: #ffffff;
+  height: 100vh;
+  transition: all .5s ease-out;
+}
+
+.menu-icon {
+  position: absolute;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  top: 20px;
+  left: 10px;
+}
+
+.menu-icon span,
+.menu-icon span::before,
+.menu-icon span::after {
+  position: absolute;
+  content: '';
+  width: 28px;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.menu-icon span::before {
+  top: -8px;
+}
+
+.menu-icon span::after {
+  top: 8px;
+}
+
+.menu-icon {
+  transform: translateX(0%);
+}
+
+.menu-icon.open {
+  transform: translateX(250px);
+  z-index: 99;
+}
+
+.menu-icon-wrapper nav ul li {
+  list-style: none;
+  padding: 20px;
+}
+
+.menu-icon-wrapper nav ul li:first-child {
+  padding-top: 40px;
+}
+
+.menu-icon-wrapper nav ul li a {
+  text-decoration: none;
+  color: #2d3142;
+  font-size: 1.2em;
+}
+
+.menu-icon-wrapper nav ul li a:hover {
+  color: #8b92b0;
+}
+
+.menu-icon.open span {
+  background: transparent;
+}
+
+.menu-icon.open > span::before {
+  transform: rotate(-225deg);
+  top: 0px;
+  background: #2d3142;
+  z-index: 99;
+}
+
+.menu-icon.open > span::after {
+  transform: rotate(225deg);
+  top: 0px;
+  background: #2d3142;
+  z-index: 99;
+}
+
 .navigation li .ham {
   display: block;
 }
 
 nav ul {
   list-style: none;
+  margin-top: 0px;
 }
 
 nav ul li a {
@@ -132,6 +226,13 @@ section#mainContent a {
   grid-row: 1/2 span;
 }
 
+.gallery .nbaTeam span:last-child {
+  font-size: 15px;
+  opacity: .8;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .hero {
   width: 100%;
   background: white;
@@ -188,6 +289,21 @@ section#mainContent a {
   grid-row: 2/2;
   grid-column: 1/4;
   text-align: center;
+}
+
+.nbaTime {
+  grid-row: 4/4;
+  grid-column: 1/4;
+  text-align: center;
+}
+
+.nbaSummary {
+  font-size: 12px;
+  opacity: .7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 #scoreboard {
@@ -395,6 +511,23 @@ footer {
   }
   #scoreboard {
     grid-template-columns: repeat(2, 1fr);
+  }
+  #menu {
+    width: 100%;
+  }
+  #menu .menu-icon {
+    display: none;
+  }
+  #menu nav {
+    transform: unset;
+    background: #2d3142;
+    color: #ffffff;
+  }
+  #menu nav li:first-child {
+    padding-top: 30px;
+  }
+  #menu nav li a {
+    color: #ffffff;
   }
 }
 
