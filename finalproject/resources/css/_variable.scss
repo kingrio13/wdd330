@@ -1,0 +1,68 @@
+$mainbg:#2d3142;
+$mainColor:#ffffff;
+$secondarybg:#a4152f;
+$secondaryColor:#ffd700;
+$extraColor:#e3e3de;
+
+//font size
+$headlineFont:1.5em;
+$normalFont:1.2em;
+
+
+//mixins
+@mixin padmarg{
+    margin:0px;
+    padding:0px;
+}
+
+
+@mixin padAdd {
+    margin:10px 0px 10px 0px;
+    padding:10px;
+}
+
+@mixin flexwrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin wdm{
+    width: 95%;
+    display: block;
+    margin:auto;
+}
+
+
+
+  $num-columns : 4;
+  $one-column : 100%;
+  $loop-start: 1;
+  $loop-end: $num-columns +1;
+
+@mixin col($span-num) {
+    flex:$one-column / $span-num;   
+}
+
+
+
+@for $index from $loop-start to $loop-end {
+    .col-#{$index} {
+        @include col($index);
+    }
+}
+
+
+
+$S: 20em;
+$M: 37.5em;     
+$L: 60em;   
+
+// media queries rush work only
+@mixin MQ($canvas) {
+  @if $canvas == M {
+   @media only screen and (min-width: $M) { @content; } 
+  }
+  @else if $canvas == L {
+   @media only screen and (min-width: $L) { @content; } 
+  }
+}

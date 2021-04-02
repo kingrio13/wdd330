@@ -1,0 +1,364 @@
+//======Main======
+
+//***
+//DISCLAIMER
+//CONTENT ARE PROPERTY OF ESPN THROUGH API
+//***
+
+
+body{
+    background:$mainbg;
+    color:$mainColor;
+    font-size: $normalFont;
+}
+
+a{
+    color:$mainColor;
+}
+
+
+h1,h2,h3,h4,h5{
+    text-transform: uppercase;
+}
+
+
+
+
+//======grid=====
+
+body{
+    padding:0px;
+    margin:0px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-areas: 
+            "header header header header"
+            "main main main main"
+            "foot foot foot foot";
+
+ 
+
+}
+
+
+header{
+    grid-area: header;
+}
+
+main{
+    grid-area: main;
+}
+
+footer{
+    grid-area: foot;
+}
+
+
+
+
+
+
+
+//=====header======
+
+.navigation li .ham{
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    li{
+        a{
+        text-decoration: none;
+        }
+    }
+}
+
+
+//section
+section{
+    width: 90%;
+    display: block;
+    margin:auto;
+    margin-bottom: 20px;
+}
+
+section#mainContent{
+    background: $extraColor;
+    color: $mainbg;
+    padding:20px 0px;
+ 
+   p,h1,h2,h3,h4{
+      @include wdm();
+   }
+   h1,h2,h3,h4{
+       margin-bottom: 40px;
+   }
+
+   a{
+       color: $mainbg;
+   }
+   
+    
+}
+
+
+.nbaTeamHeadline{
+        color: $mainColor;
+        text-align: center;
+    }
+
+.gallery{
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color:$mainbg;
+
+    div{
+        padding:20px;
+    }
+   div:nth-child(even) 
+
+    {
+        background: $extraColor;
+    }
+
+    div:nth-child(odd)
+  
+    {
+        background: lighten($mainbg,40);
+    }
+
+    h1{
+        display: block;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+    }
+
+    .nbaTeam{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap:1.5em;
+        img{
+            width: 50px;
+            grid-row: 1/2 span;
+        }
+    }
+}
+
+
+
+
+.hero{
+    width: 100%;
+    background: white;
+    min-height: 300px;
+}
+
+
+#sportsSection{
+    width: 100%;
+}
+
+
+.headline{
+    background:$secondarybg;
+    margin: 10px 0px 10px 0px;
+    display: flex;
+    padding:40px 10px;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.headlineTitle{
+    text-transform: uppercase;
+    font-weight: 700;
+    text-indent: 20px;
+    letter-spacing: 3px;
+    border: 1px solid;
+    flex-basis: 100%;
+    text-align: center;
+    margin-top:-20px;
+}
+
+#sportsNews ul 
+    {
+        margin-block-start: 0px;
+        padding-left:10px;
+        li{
+        position: absolute;
+        opacity: 0;
+        list-style: none;
+        display: inline-block;
+        
+            a{
+                text-decoration: none;
+            }
+        }
+        
+        .active{
+          
+            opacity: 1;
+            transition: opacity ease-in .7s;
+            z-index: 100;
+        }
+}
+.nbaversus{
+    grid-row: 2/2;
+    grid-column: 1/4;
+    text-align: center;
+}
+
+#scoreboard{
+
+    display: grid;
+  grid-template-columns: 1fr;
+
+    .nbaScoreBoard{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 2px;
+        padding: 20px;
+        margin: 20px;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: $mainColor;
+        color:$mainbg;
+    
+    img{
+        width: 75px;
+    }
+    }
+
+}
+
+
+
+
+
+//======Footer======
+
+footer{
+    margin-top:20px;
+    justify-content: center;
+    align-items: center;
+    background: $extraColor;
+}
+
+.footer-1, .footer-2, .footer-copyright{
+    padding:10px;
+
+}
+
+
+.footer-copyright{
+    text-align: center;
+    font-size: 12px;
+    line-height: 2px;
+    opacity: .8;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: $mainbg ;
+}
+
+.footer-social-icons{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    ul{
+        margin: 0px;
+        padding: 0px;
+        display: flex;
+        li{
+            margin: 0 15px;
+            list-style: none;
+            a{
+                display: block;
+                width: 70px;
+                height: 70px;
+                text-align: center;
+                line-height: 70px;
+                background: $secondaryColor;
+                border-radius: 50%;
+                font-size: 30px;
+                color:$mainbg;
+                &:hover{
+                    color: $secondarybg;
+                    transition: ease-in-out .5s;
+                }
+            }
+
+
+        }
+    }
+    
+}
+
+.footer-menu{
+    text-align: center;
+    margin-block-start:0px;
+    padding-inline-start:0px;
+    li{
+        display: block;
+        text-align: left;
+        padding:10px 0px;
+
+        a{
+            text-decoration: none;
+            text-transform: uppercase;
+            color: $mainbg;
+        }   
+    }
+}
+
+
+.footer-row{
+    display: block;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+
+.footer-row2{
+    
+  background: darken($extraColor, 20);
+}
+
+
+.container{
+    background: lighten($mainbg,40);
+    margin-bottom: 20px;
+}
+
+
+
+#newslist{
+    .newslists{
+        padding:20px;
+        display: grid;
+        grid-template-columns:1fr;
+ 
+      
+        p{
+            padding:10px;
+        }
+
+        .newsIMG{
+            img{
+                height: 150px;
+                display: block;
+                margin:auto;
+            }
+        }
+
+    
+    }
+
+
+}

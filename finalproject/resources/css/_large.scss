@@ -1,0 +1,33 @@
+header nav{
+    text-align: right;
+}
+
+.gallery{
+    grid-template-columns: repeat(3,1fr);
+
+    div:nth-child(6n+1), 
+    div:nth-child(6n+2), 
+    div:nth-child(6n+3)
+     {
+         background: $extraColor;
+     }
+
+  
+ 
+     div:nth-child(6n+7),
+     div:nth-child(6n+5),
+     div:nth-child(6n+6) 
+     {
+         background: lighten($mainbg,40);
+     }
+     
+}
+
+.nbaTeamHeadline{
+    grid-row: 1;
+        grid-column: 1/4;
+    }
+
+#scoreboard{
+    grid-template-columns: repeat(3,1fr);
+}

@@ -1,0 +1,14 @@
+@import "css/variable";
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+
+@import "css/small";
+
+@media only screen and (min-width: 37.5em) {
+@import "css/medium";
+}
+
+@media only screen and (min-width: 60em) {
+@import "css/large";
+} 
