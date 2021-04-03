@@ -29,7 +29,6 @@ export default class sportsController {
          
         this.sportsView.listNews(sportsNewsList);
 
-        //fetching the URL of each list
         const newslink=document.querySelectorAll('#sportsNews ul li a');
         newslink.forEach(newslinkurl => {
             newslinkurl.addEventListener("click", event=>{
@@ -38,6 +37,10 @@ export default class sportsController {
 
                 this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
                 this.sportsView.renderNewsContent(sportsNewsContent,this.nbaContentElement);
+
+                this.commentListener();
+
+     
 
 
                 
@@ -59,14 +62,35 @@ export default class sportsController {
         });
 
 
-
-
-
-
-
        
 
     }
+
+    commentListener(){
+        
+        console.log("function is called");
+        let commentBTN=document.getElementById("commentSubmit");
+
+        console.log(commentBTN);
+          
+        // commentBTN.addEventListener("click", commenting=>{
+        //     const commentName=document.querySelector("commentName");
+        //     const commentEmail=document.querySelector("commentEmail");
+        //     const commentContent=document.querySelector("commentContent");
+
+     
+        //     if(!commentName || !commentContent || !commentEmail){
+        //         console.log("empty");
+        //     }
+        //     else{
+        //         console.log("ayon oh!");
+        //     }
+
+
+
+        // })
+    }
+
 
     async sportsScoreboard(){
         const nbaScoreboard = await this.sportsModel.getScoreboard();

@@ -87,6 +87,7 @@ export default class sportsView {
     }
 
     renderNbaTeam(nbalists){
+       
         const creatDiv=document.createElement("div");
         creatDiv.setAttribute("class", "col-3 nbaTeam");
         creatDiv.innerHTML=`
@@ -100,28 +101,12 @@ export default class sportsView {
      
     }
 
+    
+
     renderNewsContent(content,element){
         content.then(function(result) {
 
-           let commentbox=document.createElement('textarea');
-
-
-           let commentName=document.createElement('input');
-           commentName.setAttribute("type","name");
-           let commentNameLabel=document.createElement('label');
-           commentNameLabel.innerHTML="Name:"
-
-           let commentEmail=document.createElement('input'); 
-           commentEmail.setAttribute("type","email");
-           let commentEmailLabel=document.createElement('label');
-           commentEmailLabel.innerHTML="Email:"
-
-           let commentSubmit=document.createElement('input'); 
-            commentSubmit.innerHTML="Submit";
-
-           let commentDiv=document.createElement('div');
-           commentDiv.setAttribute('class','commentForm');
-
+      
            let newStory=result.headlines[0].story;
             newStory=newStory.replace(/(?:\r\n|\r|\n)/g, '<br>');
 
@@ -135,20 +120,14 @@ export default class sportsView {
             </p>
             `;
 
-            commentDiv.innerHTML="<h2>Comment:</h2>"
-
+           
             
-            commentNameLabel.appendChild(commentName);
-            commentDiv.appendChild(commentNameLabel);
+            let item = document.createElement('div');
             
-            commentEmailLabel.appendChild(commentEmail);
-            commentDiv.appendChild(commentEmailLabel);
+            item.innerHTML=`<div class="commentForm"><h2>Comment:</h2><label>Name:<input id="commentName" type="text" required="required"></label><label>Email:<input type="email" id="commentEmail" required="required"></label><textarea placeholder="Enter your Comment Here" id="commentContent"></textarea><input type="button" value="Submit" id="commentSubmit"></div>`
+            element.append(item);
 
-            commentDiv.appendChild(commentbox);
-            commentDiv.appendChild(commentSubmit);
 
-            
-            element.appendChild(commentDiv);
 
 
            
@@ -163,18 +142,17 @@ export default class sportsView {
     }
 
 
+    
+
+
 
     scoreBoard(element, content){
 
+        console.log(content);
         element.innerHTML="";
 
-        
-        console.log(element);
-        console.log(content);
-
         content.events.forEach(newContent =>{
-            console.log(element);
-            console.log(newContent);
+           
             element.appendChild(this.renderScoreBoard(newContent));
 
         });

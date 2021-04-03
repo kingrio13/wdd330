@@ -56,7 +56,7 @@ export default class HikesController {
 
   addCommentListener(){
     const addCommentBtn=document.getElementById('addComment');
-    
+    console.log(addCommentBtn);
 
     addCommentBtn.addEventListener("click", addComment=>{
       const addCommentContent=document.getElementById('newComment').value;
