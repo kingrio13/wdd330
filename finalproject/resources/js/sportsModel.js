@@ -12,8 +12,15 @@ export default class sportsModel {
         this.sportsNews = [];
         this.scoreBoard=[];
         this.nbaTeam=[{}];
+        this.type="news"
+        this.comments = this.parseLS(this.type) || [];
 
+       
         }
+
+    parseLS(type){
+            return JSON.parse(localStorage.getItem(this.type));
+    }
 
     async getsportsNews() {
         this.sportsNews = await getJSON(this.baseUrl);
@@ -41,6 +48,21 @@ export default class sportsModel {
         }
         
         return this.nbaTeam;
+    }
+
+    addComment(email, name, content){
+        console.log(email,name,content)
+        
+        const newcommentContent = {
+            name: name,
+            email: email,
+            comment: content,
+            date: new Date()
+          };
+    
+          //convert local storage to parse then make some push
+          this.comments.push(newcommentContent);
+          localStorage.setItem(this.type,JSON.stringify(this.comments));
     }
 
 

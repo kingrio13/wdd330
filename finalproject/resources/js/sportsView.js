@@ -120,15 +120,18 @@ export default class sportsView {
             </p>
             `;
 
-           
-            
             let item = document.createElement('div');
+            item.setAttribute("class","commentForm");
             
-            item.innerHTML=`<div class="commentForm"><h2>Comment:</h2><label>Name:<input id="commentName" type="text" required="required"></label><label>Email:<input type="email" id="commentEmail" required="required"></label><textarea placeholder="Enter your Comment Here" id="commentContent"></textarea><input type="button" value="Submit" id="commentSubmit"></div>`
+            item.innerHTML=`<h2>Comment:</h2><label>Name:
+            <input id="commentName" type="text" required="required"></label><label>
+            Email:<input type="email" id="commentEmail" required="required"></label>
+            <textarea placeholder="Enter your Comment Here" id="commentContent"></textarea>
+            <input type="button" id="commentSubmit" value="Submit">
+            `;
+
+
             element.append(item);
-
-
-
 
            
           }).catch(function(reason) {
@@ -148,7 +151,7 @@ export default class sportsView {
 
     scoreBoard(element, content){
 
-        console.log(content);
+        
         element.innerHTML="";
 
         content.events.forEach(newContent =>{

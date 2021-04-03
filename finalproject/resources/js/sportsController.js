@@ -32,23 +32,29 @@ export default class sportsController {
         const newslink=document.querySelectorAll('#sportsNews ul li a');
         newslink.forEach(newslinkurl => {
             newslinkurl.addEventListener("click", event=>{
+        
+                   
+               
+                event.preventDefault();
                 const newEvent=event.currentTarget.getAttribute("data-url");
                 const sportsNewsContent = this.sportsModel.newsContent(newEvent);
 
                 this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
                 this.sportsView.renderNewsContent(sportsNewsContent,this.nbaContentElement);
 
-                this.commentListener();
+               
 
-     
-
-
+              
+                    this.commentListener();
+                   
+                 
+              
                 
             });
             
         });
 
-
+        
         const newslink2=document.querySelectorAll('.newslists h3 a');
         newslink2.forEach(newslinkurl2 => {
             newslinkurl2.addEventListener("click", event=>{
@@ -57,6 +63,12 @@ export default class sportsController {
 
                 this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
                 this.sportsView.renderNewsContent(sportsNewsContent2,this.nbaContentElement);
+
+                
+                //let mike = await this.commentListener();
+                this.commentListener();
+
+
             });
             
         });
@@ -66,31 +78,50 @@ export default class sportsController {
 
     }
 
-    commentListener(){
+
+    
+
+
+
+    async commentListener(){
+
+        //needed to delay before conntinuein with the comment
+        await new Promise(resolve => setTimeout(resolve, 2000));
         
-        console.log("function is called");
-        let commentBTN=document.getElementById("commentSubmit");
+        try {
+            
+            let commentBTN=document.querySelector('#commentSubmit');
+            //console.log(commentBTN);
 
-        console.log(commentBTN);
-          
-        // commentBTN.addEventListener("click", commenting=>{
-        //     const commentName=document.querySelector("commentName");
-        //     const commentEmail=document.querySelector("commentEmail");
-        //     const commentContent=document.querySelector("commentContent");
+               commentBTN.addEventListener("click", comments=>{
+                comments.preventDefault();
+                
+                const commentName = document.querySelector('#commentName');
+                const commentEmail = document.querySelector('#commentEmail');
+                const commentContent = document.querySelector('#commentContent');
+                //console.log(commentEmail.value, commentName.value, commentContent.value);
 
-     
-        //     if(!commentName || !commentContent || !commentEmail){
-        //         console.log("empty");
-        //     }
-        //     else{
-        //         console.log("ayon oh!");
-        //     }
+                if(!commentEmail.value && !commentName.value && !commentContent.value){
+                    alert('Please Fill out All Fields');
+                }
+                else{
+                   
+                   this.sportsModel.addComment(commentName.value, commentEmail.value, commentContent.value);
+              
+                   
+                }
+            });
 
+            
+        } catch (error) {
+            
+        }
 
+       
+            
+}
 
-        // })
-    }
-
+  
 
     async sportsScoreboard(){
         const nbaScoreboard = await this.sportsModel.getScoreboard();
