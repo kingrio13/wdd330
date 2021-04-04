@@ -25,24 +25,20 @@
 }
 
 main {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1.5fr 3fr;
-      grid-template-columns: 1.5fr 3fr;
+  grid-template-columns: 1.5fr 3fr;
   margin: 0;
   padding: 0;
 }
 
 .pokemonInfoContainer {
   width: 90%;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   margin: auto;
   margin-top: 50px;
   padding: 20px;
   max-width: 300px;
-  -webkit-box-shadow: 2px 2px 25px #333;
-          box-shadow: 2px 2px 25px #333;
+  box-shadow: 2px 2px 25px #333;
 }
 
 .pokemonInfoContainer img {
@@ -71,11 +67,8 @@ main {
 }
 
 .pagiContainer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .pagiContainer input {
@@ -87,36 +80,22 @@ main {
 }
 
 #poke_pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 #poke_pagination .btn_prev {
-  -webkit-box-ordinal-group: 2;
-      -ms-flex-order: 1;
-          order: 1;
+  order: 1;
 }
 
 #poke_pagination .btn_next {
-  -webkit-box-ordinal-group: 4;
-      -ms-flex-order: 3;
-          order: 3;
+  order: 3;
 }
 
 #poke_pagination .pagiContainer {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
+  order: 2;
 }
 
 #poke_pagination .pagiContainer .btn_hide {

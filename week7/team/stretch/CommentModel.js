@@ -25,6 +25,7 @@ export default class CommentModel {
 
 
     listCommentByName(){
+      
       return this.comments.filter(fName => fName.name === this.commentName);
     }
 

@@ -5,6 +5,10 @@
 //CONTENT ARE PROPERTY OF ESPN THROUGH API
 //***
 
+html {
+    scroll-behavior: smooth;
+  }
+
 
 body{
     background:$mainbg;
@@ -211,8 +215,13 @@ section#mainContent{
 
 
 .nbaTeamHeadline{
-        color: $mainColor;
+       
         text-align: center;
+            padding:20px;
+            margin-bottom: 0px;
+            background: $mainColor;
+            color: $mainbg;
+      
     }
 
 .gallery{
@@ -408,6 +417,54 @@ section#mainContent{
 
 }
 
+
+
+section#mainContent #commentLists h3{
+    margin-bottom: 5px;
+}
+#commentLists{
+margin: 50px auto auto auto;
+display: grid;
+grid-template-columns: 1fr;
+width:90%;
+
+h3{
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+ul{
+    li{
+        list-style: none;
+        border-bottom: 1px solid darken($mainColor, 50);
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+    .commentContent{
+        font-style: normal;
+    }
+
+
+    .commentName{
+        font-style:italic;
+        display: block;
+        color:$mainbg;
+        font-size: .8em;
+        margin-top: .5em;
+
+    }
+
+
+    .commentDate{
+        font-style:italic;
+        font-size: 14px;
+        display: block;
+        color:darken($mainColor, 50)
+    }
+}
+
+}
 
 
 

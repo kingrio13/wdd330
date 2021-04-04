@@ -1,5 +1,5 @@
 
-console.log('index is working');
+
 
 import  sportsController from './sportsController.js';
 

@@ -15,6 +15,8 @@ export default class sportsModel {
         this.type="news"
         this.comments = this.parseLS(this.type) || [];
 
+        this.commentURL="";
+
        
         }
 
@@ -50,10 +52,11 @@ export default class sportsModel {
         return this.nbaTeam;
     }
 
-    addComment(email, name, content){
+    addComment(url, email, name, content){
         console.log(email,name,content)
         
         const newcommentContent = {
+            url:url,
             name: name,
             email: email,
             comment: content,
@@ -64,6 +67,15 @@ export default class sportsModel {
           this.comments.push(newcommentContent);
           localStorage.setItem(this.type,JSON.stringify(this.comments));
     }
+
+    getCommentByURL(url){
+        return this.commentURL=url;
+    }
+
+    listCommentByURL(){
+        return this.comments.filter(comments => comments.url=== this.commentURL);
+      }
+
 
 
        

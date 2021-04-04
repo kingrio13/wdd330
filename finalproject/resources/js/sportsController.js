@@ -45,7 +45,7 @@ export default class sportsController {
                
 
               
-                    this.commentListener();
+                    this.commentListener(newEvent);
                    
                  
               
@@ -66,7 +66,7 @@ export default class sportsController {
 
                 
                 //let mike = await this.commentListener();
-                this.commentListener();
+                this.commentListener(newEvent2);
 
 
             });
@@ -83,11 +83,17 @@ export default class sportsController {
 
 
 
-    async commentListener(){
+    async commentListener(url){
 
         //needed to delay before conntinuein with the comment
         await new Promise(resolve => setTimeout(resolve, 2000));
         
+          
+          this.sportsModel.getCommentByURL(url);
+          this.sportsView.showComment(this.sportsModel.listCommentByURL());   
+          
+
+
         try {
             
             let commentBTN=document.querySelector('#commentSubmit');
@@ -96,18 +102,34 @@ export default class sportsController {
                commentBTN.addEventListener("click", comments=>{
                 comments.preventDefault();
                 
+              
+
+
+
                 const commentName = document.querySelector('#commentName');
                 const commentEmail = document.querySelector('#commentEmail');
                 const commentContent = document.querySelector('#commentContent');
-                //console.log(commentEmail.value, commentName.value, commentContent.value);
+                
+                
 
                 if(!commentEmail.value && !commentName.value && !commentContent.value){
                     alert('Please Fill out All Fields');
                 }
                 else{
                    
-                   this.sportsModel.addComment(commentName.value, commentEmail.value, commentContent.value);
-              
+                   this.sportsModel.addComment(url,commentEmail.value, commentName.value,  commentContent.value);
+                   
+                   alert("Thank you for your comment");
+
+                   commentName.value = "";
+                   commentEmail.value = "";
+                   commentContent.value = ""; 
+                   //clear the content fields
+                   //show the new list 
+
+                    this.sportsModel.getCommentByURL(url);
+                    this.sportsView.showComment(this.sportsModel.listCommentByURL());   
+          
                    
                 }
             });

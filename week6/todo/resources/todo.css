@@ -11,14 +11,9 @@ div#divActive > h2 {
 }
 
 .addTodo {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .addTodo input[type=text] {
@@ -32,7 +27,6 @@ div#divActive > h2 {
   border: 1px solid #333;
   text-transform: uppercase;
   font-size: 1em;
-  -webkit-transition: .2s;
   transition: .2s;
   background: transparent;
 }
@@ -51,7 +45,6 @@ div#divActive > h2 {
   opacity: .8;
   text-decoration: line-through;
   color: #a5a4a4;
-  -webkit-transition: .2s ease-in-out;
   transition: .2s ease-in-out;
 }
 
@@ -63,21 +56,15 @@ div#divActive > h2 {
 #todoActive li {
   list-style: none;
   padding: 5px;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: auto 2fr auto;
-      grid-template-columns: auto 2fr auto;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  grid-template-columns: auto 2fr auto;
+  align-items: center;
   grid-gap: 1em;
   border-bottom: 1px solid #eee;
 }
 
 #todoActive li span {
-  -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  justify-content: left;
   font-size: 1.2em;
 }
 
@@ -99,8 +86,6 @@ div#divActive > h2 {
 }
 
 #todoActive li input[type=checkbox] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
   -o-appearance: none;
   appearance: none;
   background-color: transparent;
@@ -120,8 +105,7 @@ div#divActive > h2 {
 }
 
 #todoActive li input[type=checkbox]:hover {
-  -webkit-box-shadow: 0px 0px 10px #F0CA47;
-          box-shadow: 0px 0px 10px #F0CA47;
+  box-shadow: 0px 0px 10px #F0CA47;
 }
 
 #noteList {
@@ -132,11 +116,8 @@ div#divActive > h2 {
 }
 
 #divFooter {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   border-top: 1px solid #e3e3e3;
 }
 
@@ -146,7 +127,6 @@ div#divActive > h2 {
   text-transform: uppercase;
   margin-top: 20px;
   opacity: .6;
-  -webkit-transition: .2s;
   transition: .2s;
 }
 

@@ -123,8 +123,7 @@ export default class sportsView {
             let item = document.createElement('div');
             item.setAttribute("class","commentForm");
             
-            item.innerHTML=`<h2>Comment:</h2><label>Name:
-            <input id="commentName" type="text" required="required"></label><label>
+            item.innerHTML=`<h2>Comment:</h2><label>Name:<input id="commentName" type="text" required="required"></label><label>
             Email:<input type="email" id="commentEmail" required="required"></label>
             <textarea placeholder="Enter your Comment Here" id="commentContent"></textarea>
             <input type="button" id="commentSubmit" value="Submit">
@@ -132,6 +131,13 @@ export default class sportsView {
 
 
             element.append(item);
+
+            let commentList=document.createElement('div');
+            commentList.setAttribute('id','commentLists');
+            element.appendChild(commentList);
+
+            
+
 
            
           }).catch(function(reason) {
@@ -145,7 +151,31 @@ export default class sportsView {
     }
 
 
-    
+    showComment(url){
+
+        if(url.length>0){
+            let commentList = document.querySelector('#commentLists');
+            let ulCommentList=document.createElement('ul');
+            
+            commentList.textContent="";
+            let commenth2 = document.createElement('h3');
+                commenth2.textContent="All Comments";
+                commentList.appendChild(commenth2);
+            
+            url.forEach(comment => {
+              let liList = document.createElement('li');
+              const mydate=new Date(comment.date);
+              liList.innerHTML = `<span class="commentContent">${comment.comment}<span>
+              <span class="commentName">by: ${comment.name} - ${comment.email}</span> 
+              <span class="commentDate">${mydate.getDate() + ' ' + mydate.toLocaleString('en-us', { month: "short" }) + ' ' + mydate.getFullYear()}</span>`;
+              ulCommentList.appendChild(liList);
+            });
+            commentList.appendChild(ulCommentList)
+            
+            }
+            
+
+   }     
 
 
 

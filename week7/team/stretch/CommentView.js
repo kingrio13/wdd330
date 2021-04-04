@@ -68,13 +68,15 @@ renderCommentType(keys){
 
 
 showSingleComment(commentbyName){
+  
+  
   if(commentbyName.length>0){
 let commentList = document.querySelector('#commentLists');
 let ulCommentList=document.createElement('ul');
 
 commentList.textContent="";
-let commenth2 = document.createElement('h2');
-    commenth2.textContent="Comments";
+let commenth2 = document.createElement('h3');
+    commenth2.textContent="All Comments";
     commentList.appendChild(commenth2);
 
 commentbyName.forEach(comment => {

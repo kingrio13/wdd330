@@ -46,35 +46,25 @@ h1 {
 ul {
   padding: 0;
   margin: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #hikes li {
   z-index: 9999;
   width: 90%;
   margin: auto;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-areas: "link_title link_title" "li_image li_description";
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-areas: "link_title link_title" "li_image li_description";
   grid-gap: 1em;
   padding-bottom: 3em;
 }
 
 #hikes li:hover {
   cursor: pointer;
-  -webkit-box-shadow: 0px 0px 30px grey;
-          box-shadow: 0px 0px 30px grey;
+  box-shadow: 0px 0px 30px grey;
 }
 
 #hikes li span {
@@ -84,9 +74,6 @@ ul {
 }
 
 #hikes li h2 {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: link_title;
   background-color: blanchedalmond;
   padding: .5em;
@@ -94,8 +81,6 @@ ul {
 }
 
 #hikes li .image {
-  -ms-grid-row: 2;
-  -ms-grid-column: 1;
   grid-area: li_image;
 }
 
@@ -112,8 +97,6 @@ ul {
 }
 
 #hikes li .description {
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
   grid-area: li_description;
 }
 
@@ -144,10 +127,8 @@ ul {
 #comments {
   width: 90%;
   margin: 20px auto 20px auto;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 }
 
 #comments ul li {
@@ -171,10 +152,8 @@ ul {
 }
 
 .divCommentboxContainer .commentContainer {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 }
 
 .divCommentboxContainer .commentContainer textarea {
@@ -205,16 +184,13 @@ ul {
 
 #commentLists ul li:hover {
   cursor: pointer;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 #commentLists {
   margin: auto;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 }
 
 #commentLists ul li {
@@ -233,12 +209,8 @@ ul {
 }
 
 .listSelect {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 .listSelect select {
