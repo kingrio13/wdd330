@@ -44,7 +44,12 @@ const links = [
       {
         label: "Week 11 - is deleted per github request",
         url: "#"
+      },
+      {
+        label: "Final project",
+        url: "finalproject/index.html"
       }
+
   ]
 
 
