@@ -20,9 +20,25 @@ export default class sportsModel {
        
         }
 
-    parseLS(type){
+    parseLS(){
             return JSON.parse(localStorage.getItem(this.type));
     }
+
+
+
+
+    filterLS(){
+        let comp="url"
+           const unique =  this.comments.map(e => e[comp])
+                  .map((e, i, final) => final.indexOf(e) === i && i)
+                 .filter((e) => this.comments[e]).map(e => this.comments[e]);
+
+         
+            return unique;
+
+    }
+
+
 
     async getsportsNews() {
         this.sportsNews = await getJSON(this.baseUrl);
@@ -52,11 +68,12 @@ export default class sportsModel {
         return this.nbaTeam;
     }
 
-    addComment(url, email, name, content){
-        console.log(email,name,content)
+    addComment(url, email, name, content, title){
+        console.log(email,name,content, title)
         
         const newcommentContent = {
             url:url,
+            title:title,
             name: name,
             email: email,
             comment: content,
@@ -67,6 +84,9 @@ export default class sportsModel {
           this.comments.push(newcommentContent);
           localStorage.setItem(this.type,JSON.stringify(this.comments));
     }
+
+    
+
 
     getCommentByURL(url){
         return this.commentURL=url;

@@ -178,6 +178,30 @@ export default class sportsView {
    }     
 
 
+   showDiscussion(element,content){
+    element.innerHTML="";
+    let h3title=document.createElement('h3');
+    h3title.setAttribute('id','h3discussions')
+    h3title.textContent="Most Talked Articles";
+    element.appendChild(h3title);
+    content.forEach(newsContent=>{
+        element.appendChild(this.listDiscussion(newsContent));
+    });
+
+
+   }
+
+   listDiscussion(content){
+    const item = document.createElement("div");
+    item.setAttribute("class","discussions");
+
+    item.innerHTML=`<a href="#" data-url="${content.url}">${content.title}</a>`;
+
+    return item;
+
+   }
+
+
 
     scoreBoard(element, content){
 

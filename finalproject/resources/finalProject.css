@@ -121,7 +121,7 @@ footer {
 .menu-icon-wrapper nav ul li a {
   text-decoration: none;
   color: #2d3142;
-  font-size: 1.2em;
+  font-size: 1em;
 }
 
 .menu-icon-wrapper nav ul li a:hover {
@@ -144,10 +144,6 @@ footer {
   top: 0px;
   background: #2d3142;
   z-index: 99;
-}
-
-.navigation li .ham {
-  display: block;
 }
 
 nav ul {
@@ -186,12 +182,34 @@ section#mainContent a {
   color: #2d3142;
 }
 
+section#mainContent a:hover {
+  color: #ffd700;
+}
+
 .nbaTeamHeadline {
   text-align: center;
   padding: 20px;
   margin-bottom: 0px;
   background: #ffffff;
   color: #2d3142;
+}
+
+.discussions {
+  padding: 0px 20px 20px 20px;
+}
+
+.discussions a {
+  text-decoration: none;
+  color: #2d3142;
+}
+
+.discussions a:hover {
+  color: #ffd700;
+}
+
+#h3discussions {
+  margin: 0px;
+  padding: 0px 20px 20px 20px;
 }
 
 .gallery {
@@ -242,8 +260,10 @@ section#mainContent a {
 
 .hero {
   width: 100%;
-  background: white;
-  min-height: 300px;
+  background: url("../resources/images/banner.jpg");
+  min-height: 400px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #sportsSection {
@@ -517,6 +537,10 @@ footer {
   grid-template-columns: 1fr;
 }
 
+#newslist .newslists h3 a:hover {
+  color: #ffd700;
+}
+
 #newslist .newslists p {
   padding: 10px;
 }
@@ -540,6 +564,9 @@ footer {
     text-decoration: none;
     text-transform: uppercase;
     padding: 10px;
+  }
+  .menu-icon-wrapper nav ul li {
+    padding: 0px;
   }
   section#sportsSection {
     width: 100%;
@@ -604,6 +631,9 @@ footer {
   }
   #scoreboard {
     grid-template-columns: repeat(2, 1fr);
+  }
+  #menu nav li a:hover {
+    color: #ffd700;
   }
   #menu {
     width: 100%;

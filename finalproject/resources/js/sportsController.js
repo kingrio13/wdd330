@@ -2,6 +2,9 @@ import sportsModel from './sportsModel.js';
 import sportsView from './sportsView.js';
 
 
+
+
+
 export default class sportsController {
 
     constructor() {
@@ -11,13 +14,47 @@ export default class sportsController {
         this.nbaTeamElement=document.querySelector("#nbaTeam");
 
         this.nbaContentElement=document.querySelector("#mainContent");
-
+        
         }
 
     async init() {
     this.sportsNews();
     this.sportsScoreboard();
     this.sportsTeam();
+    this.menuListener();
+    }
+
+    menuListener(){
+
+        
+     
+        document.getElementById("discussions").addEventListener("click", event=> {
+            this.sportsView.showDiscussion(this.nbaContentElement, this.sportsModel.filterLS());
+
+            const newslink=document.querySelectorAll('#mainContent .discussions a');
+       
+
+            newslink.forEach(newslinkurl => {
+                newslinkurl.addEventListener("click", event=>{
+
+                    event.preventDefault();
+                    const newEvent=event.currentTarget.getAttribute("data-url");
+                    const newTitle=event.currentTarget.innerHTML;
+                    const sportsNewsContent = this.sportsModel.newsContent(newEvent);
+    
+                    this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
+                    this.sportsView.renderNewsContent(sportsNewsContent,this.nbaContentElement);
+                     
+                        this.commentListener(newEvent, newTitle);
+                    
+                });
+                
+            });
+
+            
+          });
+
+
     }
 
     async sportsNews(){
@@ -37,6 +74,7 @@ export default class sportsController {
                
                 event.preventDefault();
                 const newEvent=event.currentTarget.getAttribute("data-url");
+                const newTitle=event.currentTarget.innerHTML;
                 const sportsNewsContent = this.sportsModel.newsContent(newEvent);
 
                 this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
@@ -44,8 +82,8 @@ export default class sportsController {
 
                
 
-              
-                    this.commentListener(newEvent);
+                 
+                    this.commentListener(newEvent, newTitle);
                    
                  
               
@@ -59,6 +97,8 @@ export default class sportsController {
         newslink2.forEach(newslinkurl2 => {
             newslinkurl2.addEventListener("click", event=>{
                 const newEvent2=event.currentTarget.getAttribute("data-url");
+                const newTitle=event.currentTarget.innerHTML;
+
                 const sportsNewsContent2 = this.sportsModel.newsContent(newEvent2);
 
                 this.nbaContentElement.innerHTML="<p>Fetching News...</p>"
@@ -66,7 +106,7 @@ export default class sportsController {
 
                 
                 //let mike = await this.commentListener();
-                this.commentListener(newEvent2);
+                this.commentListener(newEvent2, newTitle);
 
 
             });
@@ -83,7 +123,7 @@ export default class sportsController {
 
 
 
-    async commentListener(url){
+    async commentListener(url, title){
 
         //needed to delay before conntinuein with the comment
         await new Promise(resolve => setTimeout(resolve, 2000));
@@ -117,7 +157,7 @@ export default class sportsController {
                 }
                 else{
                    
-                   this.sportsModel.addComment(url,commentEmail.value, commentName.value,  commentContent.value);
+                   this.sportsModel.addComment(url,commentEmail.value, commentName.value,  commentContent.value, title);
                    
                    alert("Thank you for your comment");
 

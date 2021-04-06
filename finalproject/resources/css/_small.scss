@@ -139,7 +139,7 @@ footer{
           a{
             text-decoration:none;
               color:$mainbg;
-              font-size:1.2em;
+              font-size:1em;
               &:hover{
                 color:lighten($mainbg, 40);
                 }
@@ -171,9 +171,6 @@ footer{
     
 
 
-.navigation li .ham{
-    display: block;
-}
 
 nav ul {
     list-style: none;
@@ -181,9 +178,11 @@ nav ul {
     li{
         a{
         text-decoration: none;
+      
         }
     }
 }
+
 
 
 //section
@@ -206,9 +205,12 @@ section#mainContent{
        margin-bottom: 40px;
    }
 
-   a{
-       color: $mainbg;
-   }
+  a{
+      color:$mainbg;
+      &:hover{
+          color: $secondaryColor;
+      }
+  }
    
     
 }
@@ -223,6 +225,21 @@ section#mainContent{
             color: $mainbg;
       
     }
+
+.discussions{
+    padding:0px 20px 20px 20px;
+    a{
+    text-decoration: none;
+    color: $mainbg;
+    &:hover{
+        color: $secondaryColor;
+    }
+    }
+}
+#h3discussions{
+    margin: 0px;
+    padding: 0px 20px 20px 20px;
+}
 
 .gallery{
     display: grid;
@@ -277,8 +294,10 @@ section#mainContent{
 
 .hero{
     width: 100%;
-    background: white;
-    min-height: 300px;
+    background:url('../resources/images/banner.jpg');
+    min-height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat
 }
 
 
@@ -572,7 +591,14 @@ footer{
         padding:20px;
         display: grid;
         grid-template-columns:1fr;
- 
+        
+        h3{
+            a{
+                &:hover{
+                    color: $secondaryColor;
+                }
+            }
+        }
       
         p{
             padding:10px;
