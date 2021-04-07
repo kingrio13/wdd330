@@ -49,6 +49,7 @@ export default class sportsModel {
 
    async newsContent(newsInfo){
         let news=await getJSON(newsInfo);
+        console.log(news);
         return news;
     }
     

@@ -12,7 +12,9 @@ export default class sportsView {
         //articles[2].links.api.news
         for(let x=0; x<newslist.articles.length; x++){
             const createLI=document.createElement("li");
-            createLI.innerHTML=`<a href="#" data-url="${newslist.articles[x].links.api.news.href}">${newslist.articles[x].headline}</a>`;
+            let url = newslist.articles[x].links.api.news.href.replace(/^http:\/\//i, 'https://');
+
+            createLI.innerHTML=`<a href="#" data-url="${url}">${newslist.articles[x].headline}</a>`;
 
             if(x==0){
                 createLI.setAttribute("class","active");
@@ -40,7 +42,9 @@ export default class sportsView {
         const item = document.createElement("div");
         item.setAttribute("class","newslists container");
 
-        item.innerHTML=`<h3><a href="#" data-url="${content.links.api.news.href}">${content.headline}</a></h3>
+        let url = content.links.api.news.href.replace(/^http:\/\//i, 'https://');
+
+        item.innerHTML=`<h3><a href="#" data-url="${url}">${content.headline}</a></h3>
         <div class="newsIMG"><img src="${content.images[0].url}"></div>
         <div class=NewsContent><p>${content.description}<p></div>
         `;
@@ -143,9 +147,11 @@ export default class sportsView {
           }).catch(function(reason) {
        
             content.then(function(result) {
+
+                let url = result.videos[0].links.web.href.replace(/^http:\/\//i, 'https://');
                 element.innerHTML=`<h2>SORRY!, We cannot play video Here!</h2> 
                 <p>You can go to this link to watch the video</p>
-                <p><a href="${result.videos[0].links.web.href}" target="_blank">${result.videos[0].links.web.href}</a></p>`;
+                <p><a href="${url}" target="_blank">${url}</a></p>`;
             })
          });
     }
@@ -192,10 +198,11 @@ export default class sportsView {
    }
 
    listDiscussion(content){
+    let url = content.url.replace(/^http:\/\//i, 'https://');
     const item = document.createElement("div");
     item.setAttribute("class","discussions");
 
-    item.innerHTML=`<a href="#" data-url="${content.url}">${content.title}</a>`;
+    item.innerHTML=`<a href="#" data-url="${url}">${content.title}</a>`;
 
     return item;
 

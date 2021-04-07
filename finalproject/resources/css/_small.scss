@@ -208,7 +208,7 @@ section#mainContent{
   a{
       color:$mainbg;
       &:hover{
-          color: $secondaryColor;
+          color: lighten($mainbg, 40);
       }
   }
    
